@@ -21,7 +21,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     
-    double x = 5;
+    double x = 4;
     
     
     
