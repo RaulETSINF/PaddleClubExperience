@@ -22,6 +22,7 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     
     private boolean x = true;
+    int xa = 3;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
