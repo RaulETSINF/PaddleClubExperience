@@ -23,7 +23,7 @@ public class FXMLDocumentController implements Initializable {
     
     private boolean x = true;
     int xa = 3;
-    float x = 4.0;
+    float xb = 4.0f;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
