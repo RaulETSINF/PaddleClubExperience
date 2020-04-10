@@ -24,6 +24,7 @@ public class FXMLDocumentController implements Initializable {
     private boolean x = true;
     int xa = 3;
     double xb = 4.0f;
+    String hola = "";
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
