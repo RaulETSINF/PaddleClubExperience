@@ -45,7 +45,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void registrarse(ActionEvent event) throws IOException {
-        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubDePadel_entrega/FXMLRegistro.fxml"));
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
         Parent root = miCargador.load();
         
         FXMLRegistroController controladoRegistro = miCargador.<FXMLRegistroController>getController();
