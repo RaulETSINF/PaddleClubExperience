@@ -22,7 +22,7 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     
     
-    
+    int x = 3;
     
     
     @FXML
