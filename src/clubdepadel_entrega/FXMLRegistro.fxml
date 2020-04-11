@@ -100,7 +100,7 @@
             </HBox>
          </children>
       </GridPane>
-      <Button layoutX="409.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Aceptar" />
+      <Button layoutX="409.0" layoutY="495.0" mnemonicParsing="false" onAction="#botonAceptarPulsado" prefHeight="25.0" prefWidth="62.0" text="Aceptar" />
       <Button layoutX="337.0" layoutY="495.0" mnemonicParsing="false" onAction="#botonCancelarPulsado" text="Cancelar" />
    </children>
 </AnchorPane>
