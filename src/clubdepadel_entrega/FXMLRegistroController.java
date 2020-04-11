@@ -6,6 +6,7 @@
 package clubdepadel_entrega;
 
 import DBAcess.ClubDBAccess;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Member;
 
 /**
  * FXML Controller class
