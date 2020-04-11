@@ -6,9 +6,20 @@
 package clubdepadel_entrega;
 
 import DBAcess.ClubDBAccess;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -17,9 +28,46 @@ import javafx.fxml.Initializable;
  */
 public class FXMLRegistroController implements Initializable {
 
+    @FXML
+    private TextField textoNombre;
+    @FXML
+    private TextField textoApellidos;
+    @FXML
+    private TextField textoTelefono;
+    @FXML
+    private TextField textoUsername;
+    @FXML
+    private TextField textoPassword;
+    @FXML
+    private TextField textoTarjeta;
+    @FXML
+    private ChoiceBox<?> elejImagen;
+    @FXML
+    private TextField textoSvc;
+
     /**
      * Initializes the controller class.
      */
+    @FXML
+    public void botonAceptarPulsado(){
+    
+
+}
+    @FXML
+    public void botonCancelarPulsado(Event event) throws IOException{
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+        Parent root = miCargador.load();
+
+        FXMLLoginController controladoRegistro = miCargador.<FXMLLoginController>getController();
+        controladoRegistro.initialize(null, null);
+
+        Scene scene = new Scene(root);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(scene);
+        window.show();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     } 
