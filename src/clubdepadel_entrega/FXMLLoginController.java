@@ -75,13 +75,13 @@ public class FXMLLoginController implements Initializable {
 
     }
 
+
     @FXML
-    private void registrarse(ActionEvent event) throws IOException {
-        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
+    private void resgistrarse(ActionEvent event) throws IOException {
+                FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
         Parent root = miCargador.load();
 
         FXMLRegistroController controladoRegistro = miCargador.<FXMLRegistroController>getController();
-        controladoRegistro.initialize(null, null);
 
         Scene scene = new Scene(root);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
