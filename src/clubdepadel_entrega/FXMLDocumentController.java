@@ -17,11 +17,11 @@ import javafx.scene.control.Label;
  * @author RaulP
  */
 public class FXMLDocumentController implements Initializable {
-    int xa = 5;
+    
     @FXML
     private Label label;
     
-    double x = 4;
+    
     
     
     
