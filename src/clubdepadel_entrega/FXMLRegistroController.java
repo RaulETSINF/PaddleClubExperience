@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Member;
@@ -46,6 +47,8 @@ public class FXMLRegistroController implements Initializable {
     private ChoiceBox<String> elejImagen;
     @FXML
     private TextField textoSvc;
+    @FXML
+    private ImageView photo;
 
     /**
      * Initializes the controller class.
