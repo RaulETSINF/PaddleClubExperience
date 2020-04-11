@@ -41,7 +41,7 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private TextField textoTarjeta;
     @FXML
-    private ChoiceBox<?> elejImagen;
+    private ChoiceBox<String> elejImagen;
     @FXML
     private TextField textoSvc;
 
@@ -70,6 +70,8 @@ public class FXMLRegistroController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        elejImagen.getItems().addAll("Imagen 1","Imagen 2","Imagen 3","Imagen 4","Imagen 5","Imagen 6","Imagen 7","Imagen 8","Imagen 9","Imagen 10","Imagen 11");
+        
     } 
     
     public void volverLogin(Event event) throws IOException{
