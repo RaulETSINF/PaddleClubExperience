@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="568.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clubdepadel_entrega.FXMLRegistroController">
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLRegistroController">
    <children>
       <Label alignment="CENTER" layoutX="248.0" layoutY="47.0" text="Registro">
          <font>
@@ -75,13 +74,13 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField prefHeight="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="textoNombre" GridPane.columnIndex="1" />
+            <TextField fx:id="textoApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textoTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textoUsername" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textoPassword" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="textoTarjeta" prefHeight="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="elejImagen" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <HBox alignment="CENTER" prefHeight="23.0" prefWidth="35.0" spacing="10.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <children>
                   <Label text="SVC:" underline="true">
@@ -89,7 +88,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="20.0" prefWidth="41.0">
+                  <TextField fx:id="textoSvc" prefHeight="20.0" prefWidth="41.0">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
@@ -102,6 +101,6 @@
          </children>
       </GridPane>
       <Button layoutX="409.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Aceptar" />
-      <Button layoutX="337.0" layoutY="495.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="337.0" layoutY="495.0" mnemonicParsing="false" onAction="#botonCancelarPulsado" text="Cancelar" />
    </children>
 </AnchorPane>
