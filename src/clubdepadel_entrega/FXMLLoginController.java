@@ -5,7 +5,9 @@
  */
 package clubdepadel_entrega;
 
+import DBAcess.ClubDBAccess;
 import java.io.IOException;
+import java.lang.reflect.Member;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,7 +27,7 @@ import javafx.stage.Stage;
  * @author RaulP
  */
 public class FXMLLoginController implements Initializable {
-
+    
     @FXML
     private TextField user_Input;
     @FXML
@@ -36,11 +38,13 @@ public class FXMLLoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        ClubDBAccess miClub = ClubDBAccess.getSingletonClubDBAccess();
+    }
+    
 
     @FXML
     private void login(ActionEvent event) {
+        
     }
 
     @FXML
