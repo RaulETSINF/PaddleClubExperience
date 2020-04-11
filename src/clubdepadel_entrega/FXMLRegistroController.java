@@ -50,7 +50,15 @@ public class FXMLRegistroController implements Initializable {
      */
     @FXML
     public void botonAceptarPulsado(){
-    
+        String nombre = textoNombre.getText();
+        String apellidos = textoApellidos.getText();
+        String telefono = textoTelefono.getText();
+        String username = textoUsername.getText();
+        String password = textoPassword.getText();
+        String tarjeta = textoTarjeta.getText();
+        
+        String svc = textoSvc.getText();
+        System.out.println(nombre+apellidos+telefono+username+password+tarjeta+svc);
 
 }
     @FXML
