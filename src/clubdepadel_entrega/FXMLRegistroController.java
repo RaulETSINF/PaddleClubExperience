@@ -49,7 +49,7 @@ public class FXMLRegistroController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    public void botonAceptarPulsado(){
+    public void botonAceptarPulsado(Event event)throws IOException{
         String nombre = textoNombre.getText();
         String apellidos = textoApellidos.getText();
         String telefono = textoTelefono.getText();
@@ -59,7 +59,17 @@ public class FXMLRegistroController implements Initializable {
         
         String svc = textoSvc.getText();
         System.out.println(nombre+apellidos+telefono+username+password+tarjeta+svc);
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+        Parent root = miCargador.load();
 
+        FXMLLoginController controladoRegistro = miCargador.<FXMLLoginController>getController();
+        controladoRegistro.initialize(null, null);
+
+        Scene scene = new Scene(root);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(scene);
+        window.show();
 }
     @FXML
     public void botonCancelarPulsado(Event event) throws IOException{
