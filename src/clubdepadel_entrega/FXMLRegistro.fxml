@@ -43,7 +43,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="nombre_Input" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Nombre" styleClass="Estilo_textField">
+            <TextField fx:id="nombre_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Nombre" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -72,7 +72,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="apellido_Input" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Apellido" styleClass="Estilo_textField">
+            <TextField fx:id="apellido_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Apellido" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -98,7 +98,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="telefono_Input" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Teléfono" styleClass="Estilo_textField">
+            <TextField fx:id="telefono_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Teléfono" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -128,7 +128,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="login_Input" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Usuario" styleClass="Estilo_textField">
+            <TextField fx:id="login_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Usuario" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -154,7 +154,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="password_Input" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Contraseña" styleClass="Estilo_textField">
+            <TextField fx:id="password_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Contraseña" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -180,7 +180,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="targeta_Input" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Tarjeta Bancaria" styleClass="Estilo_textField">
+            <TextField fx:id="targeta_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Tarjeta Bancaria" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -206,7 +206,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="svc_Input" prefHeight="40.0" prefWidth="260.0" promptText="Insertar SVC de la Tarjeta" styleClass="Estilo_textField">
+            <TextField fx:id="svc_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" promptText="Insertar SVC de la Tarjeta" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -229,7 +229,7 @@
                   <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" onAction="#seleccionarImagen" prefHeight="44.0" prefWidth="256.0" text="Seleccionar Imagen...">
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seleccionarImagen" prefHeight="44.0" prefWidth="256.0" text="Seleccionar Imagen...">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
