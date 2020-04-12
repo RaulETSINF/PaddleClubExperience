@@ -46,7 +46,7 @@ public class FXMLRegistroController implements Initializable {
     private ChoiceBox<String> elejImagen;
     @FXML
     private TextField textoSvc;
-
+   
     /**
      * Initializes the controller class.
      */
@@ -88,5 +88,5 @@ public class FXMLRegistroController implements Initializable {
         window.setScene(scene);
         window.show();
     }
-    
-}
+
+    }

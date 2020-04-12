@@ -109,5 +109,6 @@
          </font>
       </Label>
       <ImageView fx:id="photo" fitHeight="98.0" fitWidth="114.0" layoutX="489.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="boton" layoutX="366.0" layoutY="467.0" mnemonicParsing="false" onAction="#elejImagenSel" text="Button" />
    </children>
 </AnchorPane>
