@@ -93,7 +93,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="27.0" prefWidth="1368.0" VBox.vgrow="NEVER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="560.0" text="Ver Disponibilidad de las pistas">
+                  <Button mnemonicParsing="false" onAction="#verDisponibilidadPistas" prefHeight="560.0" text="Ver Disponibilidad de las pistas">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>

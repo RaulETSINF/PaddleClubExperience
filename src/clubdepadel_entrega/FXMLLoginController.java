@@ -87,5 +87,9 @@ public class FXMLLoginController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
+
+    @FXML
+    private void verDisponibilidadPistas(ActionEvent event) {
+    }
     
 }
