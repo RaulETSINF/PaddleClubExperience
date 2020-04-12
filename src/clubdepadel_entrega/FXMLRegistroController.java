@@ -46,39 +46,40 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private TextField targeta_Input;
     @FXML
-    private TextField svc_Input;
+    private TextField svc_Input; 
+    @FXML
+    private ImageView nombre_Image;
+    @FXML
+    private Text nombre_Msg;
+    @FXML
+    private ImageView apellido_Image;
+    @FXML
+    private Text apellido_Msg;
+    @FXML
+    private ImageView telefono_Image;
+    @FXML
+    private Text telefono_Msg;
+    @FXML
+    private ImageView login_Image;
+    @FXML
+    private Text login_Msg;
+    @FXML
+    private ImageView password_Image;
+    @FXML
+    private Text password_Msg;
+    @FXML
+    private ImageView tarjeta_Image;
+    @FXML
+    private Text tarjeta_Msg;
+    @FXML
+    private ImageView svc_Image;
+    @FXML
+    private Text svc_Msg;
+
 
     String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
     String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
     String caracteresConfTelefono = "1234567890";
-    @FXML
-    private Text telefono_Mensaje;
-    @FXML
-    private ImageView telefonoImageView;
-    @FXML
-    private ImageView telefonoImageView6;
-    @FXML
-    private Text telefono_Mensaje6;
-    @FXML
-    private ImageView telefonoImageView5;
-    @FXML
-    private Text telefono_Mensaje5;
-    @FXML
-    private ImageView telefonoImageView1;
-    @FXML
-    private Text telefono_Mensaje1;
-    @FXML
-    private ImageView telefonoImageView2;
-    @FXML
-    private Text telefono_Mensaje2;
-    @FXML
-    private ImageView telefonoImageView3;
-    @FXML
-    private Text telefono_Mensaje3;
-    @FXML
-    private ImageView telefonoImageView4;
-    @FXML
-    private Text telefono_Mensaje4;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,16 +103,16 @@ public class FXMLRegistroController implements Initializable {
 
         telefono_Input.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((telefono_Input.getText().length() < 9) || (telefono_Input.getText().length() > 9)) && (telefono_Input.getText().length() != 0)) {
-                telefonoImageView.setImage(null);
-                telefono_Mensaje.setFill(Paint.valueOf("#ff0000"));
-                telefonoImageView.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
-                telefono_Mensaje.setText("El Teléfono ha de contener 9 Digitos");
+                telefono_Image.setImage(null);
+                telefono_Msg.setFill(Paint.valueOf("#ff0000"));
+                telefono_Image.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
+                telefono_Msg.setText("El Teléfono ha de contener 9 Digitos");
             } else if(telefono_Input.getText().length() == 9) {
-                telefonoImageView.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
-                 telefono_Mensaje.setText("");
+                telefono_Image.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
+                 telefono_Msg.setText("");
             }else{
-                telefonoImageView.setImage(null);
-                telefono_Mensaje.setText("");
+                telefono_Image.setImage(null);
+                telefono_Msg.setText("");
             }
         });
 

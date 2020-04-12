@@ -48,8 +48,8 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView6" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="telefono_Mensaje6" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <ImageView fx:id="nombre_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="nombre_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -77,8 +77,8 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView5" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="telefono_Mensaje5" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <ImageView fx:id="apellido_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="apellido_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -103,12 +103,12 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="telefono_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </ImageView>
-            <Text fx:id="telefono_Mensaje" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <Text fx:id="telefono_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -133,8 +133,8 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView1" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="telefono_Mensaje1" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <ImageView fx:id="login_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="login_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -159,8 +159,8 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView2" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="telefono_Mensaje2" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <ImageView fx:id="password_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="password_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -185,8 +185,8 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView3" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="telefono_Mensaje3" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <ImageView fx:id="tarjeta_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="tarjeta_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -211,8 +211,8 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="telefonoImageView4" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="telefono_Mensaje4" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <ImageView fx:id="svc_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="svc_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
