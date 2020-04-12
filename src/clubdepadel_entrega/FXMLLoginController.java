@@ -62,7 +62,7 @@ public class FXMLLoginController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
             alert.setHeaderText("Error de Inicio de Sesión");
-            alert.setContentText("Puede que hayas introducido los datos erroneamente, revisalos o crea una cuenta");
+            alert.setContentText("Puede que hayas introducido los datos erroneamente o aun no estes registrado, revisalos o crea una cuenta");
             alert.showAndWait();
 
         } else {
