@@ -21,8 +21,9 @@ public class ClubDePadel_Entrega extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));    
         Scene scene = new Scene(root);
- 
         stage.setScene(scene);
+        stage.setMinHeight(768);
+        stage.setMinWidth(1024);
         stage.show();
     }
 
