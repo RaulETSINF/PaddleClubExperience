@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -25,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -46,7 +48,7 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private TextField targeta_Input;
     @FXML
-    private TextField svc_Input; 
+    private TextField svc_Input;
     @FXML
     private ImageView nombre_Image;
     @FXML
@@ -76,7 +78,6 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private Text svc_Msg;
 
-
     String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
     String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
     String caracteresConfTelefono = "1234567890";
@@ -91,9 +92,11 @@ public class FXMLRegistroController implements Initializable {
         Constrains_TextField_1(password_Input, caracteresConfLogin);
         Constrains_TextField_2(targeta_Input, caracteresConfTelefono);
         Constrains_TextField_2(svc_Input, caracteresConfTelefono);
-        inicializar_Lisseners_Numero(telefono_Input, "El Teléfono ha de contener 9 Digitos", telefono_Msg, telefono_Image, 9);
-        inicializar_Lisseners_Numero(targeta_Input, "La targeta ha de contener 16 Digitos", tarjeta_Msg, tarjeta_Image, 16);
-        inicializar_Lisseners_Numero(svc_Input, "El SVC ha de contener 3 Digitos", svc_Msg, svc_Image, 3);
+        inicializar_Lisseners_Numero(telefono_Input, "El Teléfono ha de contener 9 Digitos", "Teléfono valido", telefono_Msg, telefono_Image, 9);
+        inicializar_Lisseners_Numero(targeta_Input, "La targeta ha de contener 16 Digitos", "Targeta valida", tarjeta_Msg, tarjeta_Image, 16);
+        inicializar_Lisseners_Numero(svc_Input, "El SVC ha de contener 3 Digitos", "SVC valido", svc_Msg, svc_Image, 3);
+        inicializar_Lisseners_Login(login_Input, login_Msg, login_Image);
+        inicializar_Lisseners_Password(password_Input, password_Msg, password_Image, 4);
     }
 
     @FXML
@@ -102,42 +105,144 @@ public class FXMLRegistroController implements Initializable {
 
     @FXML
     private void cancelarRegistro(ActionEvent event) {
+
     }
 
     @FXML
     private void registrarse(ActionEvent event) {
-
+        System.out.println(comprovacionRegistro());
+        if (comprovacionRegistro() == true) {
+            String aux = quitarEspacios(apellido_Input.getText());
+            model.Member e = new Member(nombre_Input.getText(), aux,
+                    telefono_Input.getText(), login_Input.getText(), password_Input.getText(),
+                    targeta_Input.getText(), svc_Input.getText(), null);
+            ClubDBAccess.getSingletonClubDBAccess().getMembers().add(e);
+            ClubDBAccess.getSingletonClubDBAccess().saveDB();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dialogo de confirmación");
+            alert.setHeaderText("Usuario Creado Correctamente");
+            alert.setContentText("Regresa al Inicio de sesión para ingresar");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dialogo de confirmación");
+            alert.setHeaderText("Error de Registro");
+            alert.setContentText("Revisa los campos, puede que tengas alguno en blanco o mal");
+            alert.showAndWait();
+        }
     }
-    
-    private void inicializar_Lisseners_Numero(TextField x, String msg, Text y, ImageView z, int top){
+
+    private void inicializar_Lisseners_Numero(TextField x, String msg, String msg2, Text y, ImageView z, int top) {
         x.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((x.getText().length() < top) || (x.getText().length() > top)) && (x.getText().length() != 0)) {
-                z.setImage(null);
                 y.setFill(Paint.valueOf("#ff0000"));
                 z.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
                 y.setText(msg);
-            } else if(x.getText().length() == top) {
+            } else if (x.getText().length() == top) {
+                y.setFill(Paint.valueOf("#00a654"));
+                y.setText(msg2);
                 z.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
-                y.setText("");
-            }else{
+            } else {
                 z.setImage(null);
                 y.setText("");
             }
         });
-    
+
     }
-    private void Constrains_TextField_1(TextField x, String y){
+
+    private void inicializar_Lisseners_Password(TextField x, Text y, ImageView z, int top) {
+        x.textProperty().addListener((observable, oldValue, newValue) -> {
+            if ((x.getText().length() >= top) && (x.getText().length() != 0)) {
+                y.setFill(Paint.valueOf("#00a654"));
+                y.setText("Contraseña Valida");
+                z.setImage(new javafx.scene.image.Image("images/checkBox.png"));
+            } else if ((x.getText().length() < top) && (x.getText().length() != 0)) {
+                y.setFill(Paint.valueOf("#ff0000"));
+                y.setText("La contraseña ha de contener más de 4 carácteres");
+                z.setImage(new javafx.scene.image.Image("images/CrossBox.png"));
+            } else {
+                y.setText("");
+                z.setImage(null);
+            }
+        });
+    }
+
+    private void inicializar_Lisseners_Login(TextField x, Text y, ImageView z) {
+        x.textProperty().addListener((observable, oldValue, newValue) -> {
+            if ((ClubDBAccess.getSingletonClubDBAccess().existsLogin(x.getText())) && (x.getText().length() > 0)) {
+                y.setFill(Paint.valueOf("#ff0000"));
+                y.setText("Este nombre de usuario ya esta en uso");
+                z.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
+            } else if ((ClubDBAccess.getSingletonClubDBAccess().existsLogin(x.getText()) == false) && (x.getText().length() > 0)) {
+                y.setFill(Paint.valueOf("#00a654"));
+                y.setText("Nombre Disponible");
+                z.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
+            } else {
+                y.setText("");
+                z.setImage(null);
+            }
+        });
+    }
+
+    private void Constrains_TextField_1(TextField x, String y) {
         x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (y.contains(keyEvent.getCharacter())) {
                 keyEvent.consume();
             }
         });
     }
-    private void Constrains_TextField_2(TextField x, String y){
+
+    private void Constrains_TextField_2(TextField x, String y) {
         x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (!y.contains(keyEvent.getCharacter())) {
                 keyEvent.consume();
             }
         });
     }
+
+    /*
+    * Comprueba que los campos de los TextFields esten bien puestos y sin errores
+     */
+    private boolean comprovacionRegistro() {
+        if (nombre_Input.getText().length() <= 0) {
+            return false;
+        }
+        if (apellido_Input.getText().length() <= 0) {
+            return false;
+        }
+        if ((telefono_Msg.getText().equals("El Teléfono ha de contener 9 Digitos")) || (telefono_Msg.getText().equals(""))) {
+            return false;
+        }
+        if ((login_Msg.getText().equals("Este nombre de usuario ya esta en uso")) || (login_Msg.getText().equals(""))) {
+            return false;
+        }
+        if ((password_Msg.getText().equals("La contraseña ha de contener más de 4 carácteres")) || (password_Msg.getText().equals(""))) {
+            return false;
+        }
+        if (tarjeta_Msg.getText().equals("La targeta ha de contener 16 Digitos")) {
+            return false;
+        }
+        if (svc_Msg.getText().equals("El SVC ha de contener 3 Digitos")) {
+            return false;
+        }
+        return true;
+    }
+
+    /*
+    * Quita los espacios del principio del String.
+     */
+    private String quitarEspacios(String x) {
+        if (x.length() == 0) {
+            return "";
+        }
+        for (int i = 0; i < x.length(); i++) {
+            if (x.charAt(i) == ' ') {
+                x = x.substring(i + 1, x.length() - 1);
+            } else {
+                return x;
+            }
+        }
+        return x;
+    }
+
 }

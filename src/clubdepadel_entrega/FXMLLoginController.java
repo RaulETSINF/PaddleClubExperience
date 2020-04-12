@@ -66,9 +66,12 @@ public class FXMLLoginController implements Initializable {
             alert.showAndWait();
 
         } else {
-            System.out.println("Bienvenido");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dialogo de confirmación");
+            alert.setHeaderText("Inicio de Sesion Correcto");
+            alert.setContentText("Bienvenido");
+            alert.showAndWait();
         }
-
     }
 
 
