@@ -80,41 +80,21 @@ public class FXMLRegistroController implements Initializable {
     String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
     String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
     String caracteresConfTelefono = "1234567890";
+    String caracteresConfLogin = "!@#$%^&*()+={}[]|<>,`~?\\/:;'- ";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        nombre_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
-            if (caracteresConfNombre.contains(keyEvent.getCharacter())) {
-                keyEvent.consume();
-            }
-        });
+        Constrains_TextField_1(nombre_Input, caracteresConfNombre);
+        Constrains_TextField_1(apellido_Input, caracteresConfApellido);
+        Constrains_TextField_2(telefono_Input, caracteresConfTelefono);
+        Constrains_TextField_1(login_Input, caracteresConfLogin);
+        Constrains_TextField_1(password_Input, caracteresConfLogin);
+        Constrains_TextField_2(targeta_Input, caracteresConfTelefono);
+        Constrains_TextField_2(svc_Input, caracteresConfTelefono);
 
-        apellido_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
-            if (caracteresConfApellido.contains(keyEvent.getCharacter())) {
-                keyEvent.consume();
-            }
-        });
-
-        telefono_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
-            if (!caracteresConfTelefono.contains(keyEvent.getCharacter())) {
-                keyEvent.consume();
-            }
-        });
-
-        telefono_Input.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (((telefono_Input.getText().length() < 9) || (telefono_Input.getText().length() > 9)) && (telefono_Input.getText().length() != 0)) {
-                telefono_Image.setImage(null);
-                telefono_Msg.setFill(Paint.valueOf("#ff0000"));
-                telefono_Image.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
-                telefono_Msg.setText("El Teléfono ha de contener 9 Digitos");
-            } else if(telefono_Input.getText().length() == 9) {
-                telefono_Image.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
-                 telefono_Msg.setText("");
-            }else{
-                telefono_Image.setImage(null);
-                telefono_Msg.setText("");
-            }
-        });
+        inicializar_Lisseners_Numero(telefono_Input, "El Teléfono ha de contener 9 Digitos", telefono_Msg, telefono_Image, 9);
+        inicializar_Lisseners_Numero(targeta_Input, "La targeta ha de contener 16 Digitos", tarjeta_Msg, tarjeta_Image, 16);
+        inicializar_Lisseners_Numero(svc_Input, "El SVC ha de contener 3 Digitos", svc_Msg, svc_Image, 3);
 
     }
 
@@ -130,5 +110,36 @@ public class FXMLRegistroController implements Initializable {
     private void registrarse(ActionEvent event) {
 
     }
-
+    
+    private void inicializar_Lisseners_Numero(TextField x, String msg, Text y, ImageView z, int top){
+        x.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (((x.getText().length() < top) || (x.getText().length() > top)) && (x.getText().length() != 0)) {
+                z.setImage(null);
+                y.setFill(Paint.valueOf("#ff0000"));
+                z.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
+                y.setText(msg);
+            } else if(x.getText().length() == top) {
+                z.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
+                y.setText("");
+            }else{
+                z.setImage(null);
+                y.setText("");
+            }
+        });
+    
+    }
+    private void Constrains_TextField_1(TextField x, String y){
+        x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (y.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+    }
+    private void Constrains_TextField_2(TextField x, String y){
+        x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (!y.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+    }
 }
