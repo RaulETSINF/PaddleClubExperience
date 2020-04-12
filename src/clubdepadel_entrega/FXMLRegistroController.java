@@ -91,11 +91,9 @@ public class FXMLRegistroController implements Initializable {
         Constrains_TextField_1(password_Input, caracteresConfLogin);
         Constrains_TextField_2(targeta_Input, caracteresConfTelefono);
         Constrains_TextField_2(svc_Input, caracteresConfTelefono);
-
         inicializar_Lisseners_Numero(telefono_Input, "El Teléfono ha de contener 9 Digitos", telefono_Msg, telefono_Image, 9);
         inicializar_Lisseners_Numero(targeta_Input, "La targeta ha de contener 16 Digitos", tarjeta_Msg, tarjeta_Image, 16);
         inicializar_Lisseners_Numero(svc_Input, "El SVC ha de contener 3 Digitos", svc_Msg, svc_Image, 3);
-
     }
 
     @FXML
