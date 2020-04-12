@@ -50,9 +50,35 @@ public class FXMLRegistroController implements Initializable {
 
     String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
     String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
-    String caracteresConfTelefono = "1234567890 ";
+    String caracteresConfTelefono = "1234567890";
     @FXML
     private Text telefono_Mensaje;
+    @FXML
+    private ImageView telefonoImageView;
+    @FXML
+    private ImageView telefonoImageView6;
+    @FXML
+    private Text telefono_Mensaje6;
+    @FXML
+    private ImageView telefonoImageView5;
+    @FXML
+    private Text telefono_Mensaje5;
+    @FXML
+    private ImageView telefonoImageView1;
+    @FXML
+    private Text telefono_Mensaje1;
+    @FXML
+    private ImageView telefonoImageView2;
+    @FXML
+    private Text telefono_Mensaje2;
+    @FXML
+    private ImageView telefonoImageView3;
+    @FXML
+    private Text telefono_Mensaje3;
+    @FXML
+    private ImageView telefonoImageView4;
+    @FXML
+    private Text telefono_Mensaje4;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,12 +102,15 @@ public class FXMLRegistroController implements Initializable {
 
         telefono_Input.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((telefono_Input.getText().length() < 9) || (telefono_Input.getText().length() > 9)) && (telefono_Input.getText().length() != 0)) {
+                telefonoImageView.setImage(null);
                 telefono_Mensaje.setFill(Paint.valueOf("#ff0000"));
-                telefono_Mensaje.setText("El Teléfono ha de contener 8 Digitos");
+                telefonoImageView.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
+                telefono_Mensaje.setText("El Teléfono ha de contener 9 Digitos");
             } else if(telefono_Input.getText().length() == 9) {
-                telefono_Mensaje.setFill(Paint.valueOf("#00a654"));
-                telefono_Mensaje.setText("Ok");
+                telefonoImageView.setImage(new javafx.scene.image.Image("/images/checkBox.png"));
+                 telefono_Mensaje.setText("");
             }else{
+                telefonoImageView.setImage(null);
                 telefono_Mensaje.setText("");
             }
         });
