@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -74,16 +75,18 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void resgistrarse(ActionEvent event) throws IOException {
-                FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
         Parent root = miCargador.load();
 
-        FXMLRegistroController controladoRegistro = miCargador.<FXMLRegistroController>getController();
+        FXMLRegistroController controlador = miCargador.<FXMLRegistroController>getController();
+        controlador.initialize(null, null);
 
         Scene scene = new Scene(root);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene);
-        window.show();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Registro");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
     
 }

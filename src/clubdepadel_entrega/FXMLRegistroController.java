@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.Member;
 
 /**
  * FXML Controller class
@@ -43,50 +44,29 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private TextField textoTarjeta;
     @FXML
-    private ChoiceBox<String> elejImagen;
+    private ChoiceBox<?> elejImagen;
     @FXML
     private TextField textoSvc;
-   
-    /**
-     * Initializes the controller class.
-     */
     @FXML
-    public void botonAceptarPulsado(Event event)throws IOException{
-        String nombre = textoNombre.getText();
-        String apellidos = textoApellidos.getText();
-        String telefono = textoTelefono.getText();
-        String username = textoUsername.getText();
-        String password = textoPassword.getText();
-        String tarjeta = textoTarjeta.getText();
-        
-        String svc = textoSvc.getText();
-        System.out.println(nombre+apellidos+telefono+username+password+tarjeta+svc);
-        volverLogin(event);
-       
-    }
-    
+    private ImageView photo;
     @FXML
-    public void botonCancelarPulsado(Event event) throws IOException{
-        volverLogin(event);
-    }
+    private Button boton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
     } 
-    
-    public void volverLogin(Event event) throws IOException{
-        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
-        Parent root = miCargador.load();
 
-        FXMLLoginController controladoRegistro = miCargador.<FXMLLoginController>getController();
-        controladoRegistro.initialize(null, null);
+    @FXML
+    private void botonRegistrar(ActionEvent event) {
+    }
 
-        Scene scene = new Scene(root);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene);
-        window.show();
+    @FXML
+    private void botonCancelar(ActionEvent event) {
+    }
+
+    @FXML
+    private void elejImagenSel(ActionEvent event) {
     }
 
     }
