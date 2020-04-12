@@ -69,12 +69,20 @@
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="380.0" />
+               </HBox.margin>
             </Text>
             <TextField fx:id="telefono_Input" prefHeight="40.0" promptText="Insertar Teléfono" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
+            <Text fx:id="telefono_Mensaje" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="494.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">

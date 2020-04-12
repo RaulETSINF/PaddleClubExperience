@@ -22,6 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -46,11 +48,45 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private TextField svc_Input;
 
-    
+    String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
+    String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
+    String caracteresConfTelefono = "1234567890 ";
+    @FXML
+    private Text telefono_Mensaje;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    } 
+        nombre_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (caracteresConfNombre.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+
+        apellido_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (caracteresConfApellido.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+
+        telefono_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (!caracteresConfTelefono.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+
+        telefono_Input.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (((telefono_Input.getText().length() < 9) || (telefono_Input.getText().length() > 9)) && (telefono_Input.getText().length() != 0)) {
+                telefono_Mensaje.setFill(Paint.valueOf("#ff0000"));
+                telefono_Mensaje.setText("El Teléfono ha de contener 8 Digitos");
+            } else if(telefono_Input.getText().length() == 9) {
+                telefono_Mensaje.setFill(Paint.valueOf("#00a654"));
+                telefono_Mensaje.setText("Ok");
+            }else{
+                telefono_Mensaje.setText("");
+            }
+        });
+
+    }
 
     @FXML
     private void seleccionarImagen(ActionEvent event) {
@@ -62,7 +98,7 @@ public class FXMLRegistroController implements Initializable {
 
     @FXML
     private void registrarse(ActionEvent event) {
-    }
-
 
     }
+
+}
