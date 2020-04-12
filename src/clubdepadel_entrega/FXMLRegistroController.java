@@ -31,11 +31,38 @@ import javafx.stage.Stage;
  */
 public class FXMLRegistroController implements Initializable {
 
+    @FXML
+    private TextField nombre_Input;
+    @FXML
+    private TextField apellido_Input;
+    @FXML
+    private TextField telefono_Input;
+    @FXML
+    private TextField login_Input;
+    @FXML
+    private TextField password_Input;
+    @FXML
+    private TextField targeta_Input;
+    @FXML
+    private TextField svc_Input;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
     } 
+
+    @FXML
+    private void seleccionarImagen(ActionEvent event) {
+    }
+
+    @FXML
+    private void cancelarRegistro(ActionEvent event) {
+    }
+
+    @FXML
+    private void registrarse(ActionEvent event) {
+    }
 
 
     }

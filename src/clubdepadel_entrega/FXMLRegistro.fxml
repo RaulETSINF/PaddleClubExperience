@@ -36,12 +36,12 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre*" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="nombre_Input" prefHeight="40.0" promptText="Insertar Nombre" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -53,12 +53,12 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido*" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="apellido_Input" prefHeight="40.0" promptText="Insertar Apellido" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -67,12 +67,12 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono*" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="telefono_Input" prefHeight="40.0" promptText="Insertar Teléfono" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -81,12 +81,12 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login*" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="login_Input" prefHeight="40.0" promptText="Insertar Usuario" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -95,12 +95,12 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="password_Input" prefHeight="40.0" promptText="Insertar Contraseña" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -109,15 +109,15 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Tarjeta" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="targeta_Input" prefHeight="40.0" promptText="Insertar Tarjeta Bancaria" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -126,15 +126,15 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Text>
-            <TextField styleClass="Estilo_textField">
+            <TextField fx:id="svc_Input" prefHeight="40.0" prefWidth="260.0" promptText="Insertar SVC de la Tarjeta" styleClass="Estilo_textField">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="20.0" />
                </font>
             </TextField>
          </children>
@@ -143,10 +143,10 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Imagen de Perfil" wrappingWidth="270.0">
                <font>
-                  <Font size="35.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="249.0" text="Seleccionar Imagen...">
+            <Button mnemonicParsing="false" onAction="#seleccionarImagen" prefHeight="44.0" prefWidth="249.0" text="Seleccionar Imagen...">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
@@ -159,7 +159,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="682.0" prefHeight="145.0" prefWidth="1366.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" text="Cancelar">
+            <Button mnemonicParsing="false" onAction="#cancelarRegistro" text="Cancelar">
                <font>
                   <Font name="Arial Bold" size="25.0" />
                </font>
@@ -168,7 +168,7 @@
                   <String fx:value="texto_blanco" />
                </styleClass>
             </Button>
-            <Button layoutX="566.0" layoutY="28.0" mnemonicParsing="false" text="Registrarse">
+            <Button layoutX="566.0" layoutY="28.0" mnemonicParsing="false" onAction="#registrarse" text="Registrarse">
                <font>
                   <Font name="Arial Bold" size="25.0" />
                </font>
