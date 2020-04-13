@@ -103,8 +103,7 @@ public class FXMLRegistroController implements Initializable {
         Parent root = miCargador.load();
 
         FXMLSelectorImagenesController controlador = miCargador.<FXMLSelectorImagenesController>getController();
-        controlador.initialize(null, null);
-
+        controlador.initImagenPerfil(imagen_Perfil);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -127,7 +126,7 @@ public class FXMLRegistroController implements Initializable {
             String aux = quitarEspacios(apellido_Input.getText());
             model.Member e = new Member(nombre_Input.getText(), aux,
                     telefono_Input.getText(), login_Input.getText(), password_Input.getText(),
-                    targeta_Input.getText(), svc_Input.getText(), null);
+                    targeta_Input.getText(), svc_Input.getText(), imagen_Perfil.getImage());
             ClubDBAccess.getSingletonClubDBAccess().getMembers().add(e);
             ClubDBAccess.getSingletonClubDBAccess().saveDB();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

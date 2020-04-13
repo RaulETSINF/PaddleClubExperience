@@ -29,6 +29,8 @@ public class FXMLSelectorImagenesController implements Initializable {
     private ArrayList<Perfiles> misdatos = new ArrayList<Perfiles>();
     @FXML
     private ListView<Perfiles> listView;
+    
+    ImageView x = new ImageView(new Image("/images/men.PNG"));
 
     /**
      * Initializes the controller class.
@@ -43,10 +45,18 @@ public class FXMLSelectorImagenesController implements Initializable {
     }
 
     @FXML
-    private void confirmar(ActionEvent event) {
-        
+    private void confirmar(ActionEvent event) {        
+        Image aux = listView.getSelectionModel().getSelectedItem().getImagen();
+        x.setImage(aux);
     }
-
+    public void initImagenPerfil(ImageView aux){
+        x.imageProperty().addListener((observable, oldValue, newValue) -> {
+            aux.setImage(x.getImage());
+        });
+    }
+    
+    
+    
     class ImageListCell extends ListCell<Perfiles> {
 
         private ImageView view = new ImageView();
