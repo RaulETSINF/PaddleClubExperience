@@ -25,3 +25,10 @@ and open the template in the editor.
     -fx-text-fill: #ffffff;
 }
 
+.Estilo_ImageView{
+    -fx-border-color: #e6173d;
+    -fx-border-width: 50;
+    -fx-border-insets: -5;
+}
+
+

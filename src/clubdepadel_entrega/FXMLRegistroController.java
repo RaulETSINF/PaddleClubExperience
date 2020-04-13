@@ -6,25 +6,21 @@
 package clubdepadel_entrega;
 
 import DBAcess.ClubDBAccess;
-import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Member;
 
@@ -77,11 +73,13 @@ public class FXMLRegistroController implements Initializable {
     private ImageView svc_Image;
     @FXML
     private Text svc_Msg;
-
+    @FXML
+    private ImageView imagen_Perfil;
     String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
     String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
     String caracteresConfTelefono = "1234567890";
     String caracteresConfLogin = "!@#$%^&*()+={}[]|<>,`~?\\/:;'- ";
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,11 +98,25 @@ public class FXMLRegistroController implements Initializable {
     }
 
     @FXML
-    private void seleccionarImagen(ActionEvent event) {
+    private void seleccionarImagen(ActionEvent event) throws IOException {
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLSelectorImagenes.fxml"));
+        Parent root = miCargador.load();
+
+        FXMLSelectorImagenesController controlador = miCargador.<FXMLSelectorImagenesController>getController();
+        controlador.initialize(null, null);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Selector de Imagen de Perfil");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();    
+        
     }
 
     @FXML
     private void cancelarRegistro(ActionEvent event) {
+        
 
     }
 

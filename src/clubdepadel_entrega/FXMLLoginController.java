@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -38,8 +37,6 @@ public class FXMLLoginController implements Initializable {
 
     String caracteresConf = "!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
     ClubDBAccess miClub;
-    @FXML
-    private VBox ventana;
 
     /**
      * Initializes the controller class.
