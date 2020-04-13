@@ -13,10 +13,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,10 +28,11 @@ import javafx.scene.image.ImageView;
 public class FXMLSelectorImagenesController implements Initializable {
 
     private ObservableList<Perfiles> datos = null;
+    
     private ArrayList<Perfiles> misdatos = new ArrayList<Perfiles>();
     @FXML
     private ListView<Perfiles> listView;
-    
+
     ImageView x = new ImageView(new Image("/images/men.PNG"));
 
     /**
@@ -45,18 +48,23 @@ public class FXMLSelectorImagenesController implements Initializable {
     }
 
     @FXML
-    private void confirmar(ActionEvent event) {        
-        Image aux = listView.getSelectionModel().getSelectedItem().getImagen();
-        x.setImage(aux);
+    private void confirmar(ActionEvent event) {
+        if (listView.getSelectionModel().getSelectedItem() != null) {   
+            Image aux = listView.getSelectionModel().getSelectedItem().getImagen();
+            x.setImage(aux);
+        }
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
     }
-    public void initImagenPerfil(ImageView aux){
+
+    public void initImagenPerfil(ImageView aux) {
         x.imageProperty().addListener((observable, oldValue, newValue) -> {
             aux.setImage(x.getImage());
         });
     }
-    
-    
-    
+
     class ImageListCell extends ListCell<Perfiles> {
 
         private ImageView view = new ImageView();
@@ -70,7 +78,9 @@ public class FXMLSelectorImagenesController implements Initializable {
             } else {
                 view.setImage(item.getImagen());
                 setGraphic(view);
-                setText(item.getNombre());
+                setText("       " + item.getNombre());
+                setStyle("-fx-text-fill: #000000;"+"-fx-font-size: 25;"+
+                        "-fx-font-weight: bolder;" + "-fx-font-family: Arial;");
             }
         }
     }
