@@ -36,11 +36,8 @@ public class FXMLSelectorImagenesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         listView.setCellFactory(c -> new ImageListCell());
         misdatos.add(new Perfiles("Hombre 1", new Image("/images/men.PNG")));
-        misdatos.add(new Perfiles("Hombre 2", new Image("/images/men2.PNG")));
-        misdatos.add(new Perfiles("Hombre 3", new Image("/images/men3.PNG")));
-        misdatos.add(new Perfiles("Hombre 4", new Image("/images/men4.PNG")));
         datos = FXCollections.observableArrayList(misdatos);
-        listView.setItems(datos);
+        listView.setItems(datos);  
     }    
 
     @FXML
@@ -56,7 +53,7 @@ public class FXMLSelectorImagenesController implements Initializable {
             if(item == null || empty){
                 setText(null);
                 setGraphic(null);
-            }else{
+            }else {
                 view.setImage(item.getImagen());
                 setGraphic(view);
                 setText(item.getNombre());
