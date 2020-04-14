@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -78,20 +79,20 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void resgistrarse(ActionEvent event) throws IOException {
-        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
-        Parent root = miCargador.load();
+        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
+        Scene ventanaS = new Scene(ventanaP);
 
-        FXMLRegistroController controlador = miCargador.<FXMLRegistroController>getController();
-        controlador.initialize(null, null);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
 
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setMinHeight(768);
-        stage.setMinWidth(1024);
-        stage.setTitle("Registro");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
+        
+        
+        
+        window.setMinHeight(768);
+        window.setMinWidth(1024);
+        window.setTitle("Registro");
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.showAndWait();
     }
 
     @FXML
