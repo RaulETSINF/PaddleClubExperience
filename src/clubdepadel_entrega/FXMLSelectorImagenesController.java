@@ -33,7 +33,7 @@ public class FXMLSelectorImagenesController implements Initializable {
     @FXML
     private ListView<Perfiles> listView;
 
-    ImageView x = new ImageView(new Image("/images/men.PNG"));
+    ImageView x = new ImageView(new Image("/images/padel.png"));
 
     /**
      * Initializes the controller class.
@@ -86,16 +86,16 @@ public class FXMLSelectorImagenesController implements Initializable {
     }
 
     private void inicializarDatos() {
-        misdatos.add(new Perfiles("Hombre 1", new Image("/images/men.PNG")));
-        misdatos.add(new Perfiles("Hombre 2", new Image("/images/men2.PNG")));
-        misdatos.add(new Perfiles("Hombre 3", new Image("/images/men3.PNG")));
-        misdatos.add(new Perfiles("Hombre 4", new Image("/images/men4.PNG")));
-        misdatos.add(new Perfiles("Hombre 5", new Image("/images/men5.PNG")));
-        misdatos.add(new Perfiles("Mujer 1", new Image("/images/woman.PNG")));
-        misdatos.add(new Perfiles("Mujer 2", new Image("/images/woman2.PNG")));
-        misdatos.add(new Perfiles("Mujer 3", new Image("/images/woman3.PNG")));
-        misdatos.add(new Perfiles("Mujer 4", new Image("/images/woman4.PNG")));
-        misdatos.add(new Perfiles("Mujer 5", new Image("/images/woman5.PNG")));
+        misdatos.add(new Perfiles("Raqueta 1", new Image("/images/padel.png")));
+        misdatos.add(new Perfiles("Raqueta 2", new Image("/images/padel2.png")));
+        misdatos.add(new Perfiles("Raqueta 3", new Image("/images/padel3.png")));
+        misdatos.add(new Perfiles("Raqueta 4", new Image("/images/padel4.png")));
+        misdatos.add(new Perfiles("Raqueta 5", new Image("/images/padel5.png")));
+        misdatos.add(new Perfiles("Raqueta 6", new Image("/images/padel6.png")));
+        misdatos.add(new Perfiles("Raqueta 7", new Image("/images/padel7.png")));
+        misdatos.add(new Perfiles("Raqueta 8", new Image("/images/padel8.png")));
+        misdatos.add(new Perfiles("Raqueta 9", new Image("/images/padel9.png")));
+        misdatos.add(new Perfiles("Raqueta 10", new Image("/images/padel10.png")));
     }
 
 }

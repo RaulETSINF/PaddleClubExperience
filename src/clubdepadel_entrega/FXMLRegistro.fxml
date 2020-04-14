@@ -253,7 +253,7 @@
                <children>
                   <ImageView fx:id="imagen_Perfil" fitHeight="120.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/men.PNG" />
+                        <Image url="@../images/padel.png" />
                      </image>
                   </ImageView>
                </children>
