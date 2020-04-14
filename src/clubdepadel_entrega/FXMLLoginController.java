@@ -91,8 +91,8 @@ public class FXMLLoginController implements Initializable {
         window.setMinHeight(768);
         window.setMinWidth(1024);
         window.setTitle("Registro");
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.showAndWait();
+        
+       
         window.show();
     }
 
