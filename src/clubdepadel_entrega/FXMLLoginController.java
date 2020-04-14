@@ -93,6 +93,7 @@ public class FXMLLoginController implements Initializable {
         window.setTitle("Registro");
         window.initModality(Modality.APPLICATION_MODAL);
         window.showAndWait();
+        window.show();
     }
 
     @FXML
