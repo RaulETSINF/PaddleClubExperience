@@ -8,6 +8,7 @@ package clubdepadel_entrega;
 import DBAcess.ClubDBAccess;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
@@ -81,7 +85,6 @@ public class FXMLRegistroController implements Initializable {
     String caracteresConfTelefono = "1234567890";
     String caracteresConfLogin = "!@#$%^&*()+={}[]|<>,`~?\\/:;'- ";
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Constrains_TextField_1(nombre_Input, caracteresConfNombre);
@@ -110,15 +113,21 @@ public class FXMLRegistroController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Selector de Imagen de Perfil");
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();    
-        
+        stage.showAndWait();
+
     }
 
     @FXML
     private void cancelarRegistro(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Diálogo de confirmación");
+        alert.setHeaderText("Cabecera");
+        alert.setContentText("¿Seguro que quieres cancelar el registo?");
+        ButtonType buttonTypeOne = new ButtonType("SI", ButtonData.YES);
+        ButtonType buttonTypeTwo = new ButtonType("NO", ButtonData.NO);
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        Optional<ButtonType> result = alert.showAndWait();
+
     }
 
     @FXML
