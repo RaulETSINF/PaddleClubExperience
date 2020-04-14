@@ -83,7 +83,7 @@ public class FXMLRegistroController implements Initializable {
     String caracteresConfNombre = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'- ";
     String caracteresConfApellido = "1234567890!@#$%^&*()_+={}[]|<>,.`~?\\/:;'-";
     String caracteresConfTelefono = "1234567890";
-    String caracteresConfLogin = "!@#$%^&*()+={}[]|<>,`~?\\/:;'- ";
+    String caracteresConfLogin = "._!@#$%^&*()+={}[]|<>,`~?\\/:;'- ";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -98,7 +98,7 @@ public class FXMLRegistroController implements Initializable {
         inicializar_Lisseners_Numero(targeta_Input, "La targeta ha de contener 16 Digitos", "Targeta valida", tarjeta_Msg, tarjeta_Image, 16);
         inicializar_Lisseners_Numero(svc_Input, "El SVC ha de contener 3 Digitos", "SVC valido", svc_Msg, svc_Image, 3);
         inicializar_Lisseners_Login(login_Input, login_Msg, login_Image);
-        inicializar_Lisseners_Password(password_Input, password_Msg, password_Image, 4);
+        inicializar_Lisseners_Password(password_Input, password_Msg, password_Image,6);
     }
 
     @FXML
@@ -195,7 +195,7 @@ public class FXMLRegistroController implements Initializable {
                 z.setImage(new javafx.scene.image.Image("images/checkBox.png"));
             } else if ((x.getText().length() < top) && (x.getText().length() != 0)) {
                 y.setFill(Paint.valueOf("#ff0000"));
-                y.setText("La contraseña ha de contener más de 4 carácteres");
+                y.setText("La contraseña ha de contener más de 6 carácteres");
                 z.setImage(new javafx.scene.image.Image("images/CrossBox.png"));
             } else {
                 y.setText("");
