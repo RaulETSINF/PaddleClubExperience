@@ -34,14 +34,12 @@ public class FXMLLoginController implements Initializable {
     private PasswordField password_Input;
 
     String caracteresConf = "._!@#$%^&*()+={}[]|<>,`~?\\/:;'- ";
-    ClubDBAccess miClub;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        miClub = ClubDBAccess.getSingletonClubDBAccess();
         user_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (caracteresConf.contains(keyEvent.getCharacter())) {
                 keyEvent.consume();
@@ -57,7 +55,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) {
-        if (miClub.getMemberByCredentials(user_Input.getText(), password_Input.getText()) == null) {
+        if (ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText()) == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
             alert.setHeaderText("Error de Inicio de Sesión");
