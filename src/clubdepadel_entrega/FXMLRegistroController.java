@@ -143,7 +143,7 @@ public class FXMLRegistroController implements Initializable {
     }
 
     @FXML
-    private void registrarse(ActionEvent event) {
+    private void registrarse(ActionEvent event) throws IOException {
         System.out.println(comprovacionRegistro());
         if (comprovacionRegistro() == true) {
             String aux = quitarEspacios(apellido_Input.getText());
@@ -157,9 +157,14 @@ public class FXMLRegistroController implements Initializable {
             alert.setHeaderText("Usuario Creado Correctamente");
             alert.setContentText("Regresa al Inicio de sesión para ingresar");
             alert.showAndWait();
-            Node source = (Node) event.getSource();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
+                Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+                Scene ventanaS = new Scene(ventanaP);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(ventanaS);
+                stage.setMinHeight(768);
+                stage.setMinWidth(1024);
+                stage.setTitle("Login");
+                stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
