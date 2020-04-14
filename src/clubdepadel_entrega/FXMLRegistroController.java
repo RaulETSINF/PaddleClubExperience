@@ -118,15 +118,27 @@ public class FXMLRegistroController implements Initializable {
     }
 
     @FXML
-    private void cancelarRegistro(ActionEvent event) {
+    private void cancelarRegistro(ActionEvent event) throws IOException {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Diálogo de confirmación");
-        alert.setHeaderText("Cabecera");
+        alert.setHeaderText("Cancelar Registro");
         alert.setContentText("¿Seguro que quieres cancelar el registo?");
         ButtonType buttonTypeOne = new ButtonType("SI", ButtonData.YES);
         ButtonType buttonTypeTwo = new ButtonType("NO", ButtonData.NO);
-        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        alert.getButtonTypes().setAll(buttonTypeTwo, buttonTypeOne);
         Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == buttonTypeOne) {
+                Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+                Scene ventanaS = new Scene(ventanaP);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(ventanaS);
+                stage.setMinHeight(768);
+                stage.setMinWidth(1024);
+                stage.setTitle("Login");
+                stage.show();
+            }
+        }
 
     }
 

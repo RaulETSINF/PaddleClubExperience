@@ -79,23 +79,14 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void resgistrarse(ActionEvent event) throws IOException {
-        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
-        
-        
-        
+        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));    
         Scene ventanaS = new Scene(ventanaP);
-        
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-
-        
-        window.setScene(ventanaS);
-        
-        window.setMinHeight(768);
-        window.setMinWidth(1024);
-        window.setTitle("Registro");
-     
-        window.show();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();    
+        stage.setScene(ventanaS);     
+        stage.setMinHeight(768);
+        stage.setMinWidth(1024);
+        stage.setTitle("Registro");
+        stage.show();
     }
 
     @FXML
