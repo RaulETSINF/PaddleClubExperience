@@ -86,7 +86,7 @@ public class FXMLLoginController implements Initializable {
         
 
         
-        
+        window.setScene(ventanaS);
         
         window.setMinHeight(768);
         window.setMinWidth(1024);
