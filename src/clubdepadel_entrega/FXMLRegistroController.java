@@ -97,7 +97,6 @@ public class FXMLRegistroController implements Initializable {
     private void seleccionarImagen(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLSelectorImagenes.fxml"));
         Parent root = miCargador.load();
-
         FXMLSelectorImagenesController controlador = miCargador.<FXMLSelectorImagenesController>getController();
         controlador.initImagenPerfil(imagen_Perfil);
         Scene scene = new Scene(root);
