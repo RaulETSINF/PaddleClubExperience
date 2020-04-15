@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 15, 2020, 3:03:07 PM
+    Author     : RaulP
+*/
+.Estilo_Botones{
+    -fx-background-color: #e6173d;
+    -fx-background-radius: 15;
+    -fx-text-fill: #ffffff;
+}
+.Estilo_Fondo{
+    -fx-background-color: #e8e1e2;   
+}
+
+

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLSelectorImagenesController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="Estilo_Fondo" stylesheets="@../Styles/SelectorImagenStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLSelectorImagenesController">
    <children>
       <ListView fx:id="listView" prefHeight="600.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
@@ -16,7 +16,7 @@
       </ListView>
       <HBox alignment="CENTER" prefHeight="80.0" prefWidth="800.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#confirmar" text="Confirmar">
+            <Button mnemonicParsing="false" onAction="#confirmar" styleClass="Estilo_Botones" text="Confirmar">
                <font>
                   <Font size="24.0" />
                </font>
