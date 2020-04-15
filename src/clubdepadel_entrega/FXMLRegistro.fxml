@@ -34,14 +34,14 @@
             </Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="344.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="344.0" prefHeight="100.0" prefWidth="1247.0" spacing="20.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre*" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
-                  <Insets left="410.0" />
+                  <Insets />
                </HBox.margin>
             </Text>
             <TextField fx:id="nombre_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Nombre" styleClass="Estilo_textField">
@@ -49,28 +49,19 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="nombre_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="nombre_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
-               <font>
-                  <Font name="Arial" size="21.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Text>
          </children>
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="394.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="394.0" prefHeight="100.0" prefWidth="1263.0" spacing="20.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido*" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
-                  <Insets left="410.0" />
+                  <Insets />
                </HBox.margin>
             </Text>
             <TextField fx:id="apellido_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Apellido" styleClass="Estilo_textField">
@@ -78,15 +69,6 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <ImageView fx:id="apellido_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="apellido_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
-               <font>
-                  <Font name="Arial" size="21.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Text>
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="444.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
@@ -111,7 +93,7 @@
             </ImageView>
             <Text fx:id="telefono_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
-                  <Font name="Arial" size="21.0" />
+                  <Font name="Arial" size="19.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />
@@ -137,7 +119,7 @@
             <ImageView fx:id="login_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
             <Text fx:id="login_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
-                  <Font name="Arial" size="21.0" />
+                  <Font name="Arial" size="19.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />
@@ -163,7 +145,7 @@
             <ImageView fx:id="password_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
             <Text fx:id="password_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
-                  <Font name="Arial" size="21.0" />
+                  <Font name="Arial" size="19.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />
@@ -171,7 +153,7 @@
             </Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="594.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="594.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="NEVER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Tarjeta" wrappingWidth="270.0">
                <font>
@@ -187,9 +169,9 @@
                </font>
             </TextField>
             <ImageView fx:id="tarjeta_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="tarjeta_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
+            <Text fx:id="tarjeta_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0" HBox.hgrow="NEVER">
                <font>
-                  <Font name="Arial" size="21.0" />
+                  <Font name="Arial" size="19.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />
@@ -207,7 +189,7 @@
                   <Insets left="410.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="svc_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" promptText="Insertar SVC de la Tarjeta" styleClass="Estilo_textField">
+            <TextField fx:id="svc_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar SVC de la Tarjeta" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -215,7 +197,7 @@
             <ImageView fx:id="svc_Image" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
             <Text fx:id="svc_Msg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="334.0">
                <font>
-                  <Font name="Arial" size="21.0" />
+                  <Font name="Arial" size="19.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />
@@ -246,7 +228,7 @@
                   </Button>
                </children>
                <HBox.margin>
-                  <Insets left="5.0" right="155.0" top="5.0" />
+                  <Insets left="20.0" right="155.0" top="5.0" />
                </HBox.margin>
             </VBox>
             <HBox alignment="CENTER" maxHeight="123.0" maxWidth="135.0" minHeight="123.0" minWidth="135.0" prefHeight="123.0" prefWidth="135.0" HBox.hgrow="NEVER">

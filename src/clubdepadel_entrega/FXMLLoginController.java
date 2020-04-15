@@ -79,7 +79,7 @@ public class FXMLLoginController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();    
         stage.setScene(ventanaS);     
         stage.setMinHeight(768);
-        stage.setMinWidth(1024);
+        stage.setMinWidth(1150);
         stage.setTitle("Registro");
         stage.show();
     }

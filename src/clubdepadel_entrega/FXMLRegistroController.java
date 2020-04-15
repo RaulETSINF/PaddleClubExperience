@@ -51,14 +51,6 @@ public class FXMLRegistroController implements Initializable {
     @FXML
     private TextField svc_Input;
     @FXML
-    private ImageView nombre_Image;
-    @FXML
-    private Text nombre_Msg;
-    @FXML
-    private ImageView apellido_Image;
-    @FXML
-    private Text apellido_Msg;
-    @FXML
     private ImageView telefono_Image;
     @FXML
     private Text telefono_Msg;
@@ -94,9 +86,9 @@ public class FXMLRegistroController implements Initializable {
         Constrains_TextField_1(password_Input, caracteresConfLogin);
         Constrains_TextField_2(targeta_Input, caracteresConfTelefono);
         Constrains_TextField_2(svc_Input, caracteresConfTelefono);
-        inicializar_Lisseners_Numero(telefono_Input, "El Teléfono ha de contener 9 Digitos", "Teléfono valido", telefono_Msg, telefono_Image, 9);
-        inicializar_Lisseners_Numero(targeta_Input, "La targeta ha de contener 16 Digitos", "Targeta valida", tarjeta_Msg, tarjeta_Image, 16);
-        inicializar_Lisseners_Numero(svc_Input, "El SVC ha de contener 3 Digitos", "SVC valido", svc_Msg, svc_Image, 3);
+        inicializar_Lisseners_Numero(telefono_Input, "Ha de contener 9 Digitos", "Teléfono valido", telefono_Msg, telefono_Image, 9);
+        inicializar_Lisseners_Numero(targeta_Input, "Ha de contener 16 Digitos", "Targeta valida", tarjeta_Msg, tarjeta_Image, 16);
+        inicializar_Lisseners_Numero(svc_Input, "Ha de contener 3 Digitos", "SVC valido", svc_Msg, svc_Image, 3);
         inicializar_Lisseners_Login(login_Input, login_Msg, login_Image);
         inicializar_Lisseners_Password(password_Input, password_Msg, password_Image,6);
     }
@@ -200,7 +192,7 @@ public class FXMLRegistroController implements Initializable {
                 z.setImage(new javafx.scene.image.Image("images/checkBox.png"));
             } else if ((x.getText().length() < top) && (x.getText().length() != 0)) {
                 y.setFill(Paint.valueOf("#ff0000"));
-                y.setText("La contraseña ha de contener más de 6 carácteres");
+                y.setText("Mas de 6 carácteres");
                 z.setImage(new javafx.scene.image.Image("images/CrossBox.png"));
             } else {
                 y.setText("");
@@ -213,7 +205,7 @@ public class FXMLRegistroController implements Initializable {
         x.textProperty().addListener((observable, oldValue, newValue) -> {
             if ((ClubDBAccess.getSingletonClubDBAccess().existsLogin(x.getText())) && (x.getText().length() > 0)) {
                 y.setFill(Paint.valueOf("#ff0000"));
-                y.setText("Este nombre de usuario ya esta en uso");
+                y.setText("Nombre de usuario en uso");
                 z.setImage(new javafx.scene.image.Image("/images/CrossBox.png"));
             } else if ((ClubDBAccess.getSingletonClubDBAccess().existsLogin(x.getText()) == false) && (x.getText().length() > 0)) {
                 y.setFill(Paint.valueOf("#00a654"));
@@ -252,19 +244,19 @@ public class FXMLRegistroController implements Initializable {
         if (apellido_Input.getText().length() <= 0) {
             return false;
         }
-        if ((telefono_Msg.getText().equals("El Teléfono ha de contener 9 Digitos")) || (telefono_Msg.getText().equals(""))) {
+        if ((telefono_Msg.getText().equals("Ha de contener 9 Digitos")) || (telefono_Msg.getText().equals(""))) {
             return false;
         }
-        if ((login_Msg.getText().equals("Este nombre de usuario ya esta en uso")) || (login_Msg.getText().equals(""))) {
+        if ((login_Msg.getText().equals("Nombre de usuario en uso")) || (login_Msg.getText().equals(""))) {
             return false;
         }
-        if ((password_Msg.getText().equals("La contraseña ha de contener más de 4 carácteres")) || (password_Msg.getText().equals(""))) {
+        if ((password_Msg.getText().equals("Mas de 6 carácteres")) || (password_Msg.getText().equals(""))) {
             return false;
         }
-        if (tarjeta_Msg.getText().equals("La targeta ha de contener 16 Digitos")) {
+        if (tarjeta_Msg.getText().equals("Ha de contener 16 Digitos")) {
             return false;
         }
-        if (svc_Msg.getText().equals("El SVC ha de contener 3 Digitos")) {
+        if (svc_Msg.getText().equals("Ha de contener 3 Digitos")) {
             return false;
         }
         return true;
