@@ -25,6 +25,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Member;
+
 /**
  * FXML Controller class
  *
@@ -35,17 +36,17 @@ public class FXMLMiPerfilController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     private String caracteresConfTelefono = "1234567890";
 
+    private model.Member miPerfil = null;
 
-    private Member miPerfil = new Member();
-    private String login;
+    private String login ;
     private String password;
     private String nombre;
     private String apellido;
     private String tarjeta;
     private Image imagen;
+
     @FXML
     private Label labelUsuario;
     @FXML
@@ -56,8 +57,7 @@ public class FXMLMiPerfilController implements Initializable {
     private Label labelApellido;
     @FXML
     private Label labelTarjeta;
-    
-    
+
     private Button añadirTarjeta;
     @FXML
     private Button anyadirTarjeta;
@@ -75,93 +75,99 @@ public class FXMLMiPerfilController implements Initializable {
     private Text mensage_error2;
     @FXML
     private Label notarjetaLabel;
-            
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+
+    public void initPerfil(String x, String y) {
+        this.login = x;
+        this.password = y;
         
-        login = FXMLLoginController.login_;
-        password = FXMLLoginController.password_;
         
+        System.out.println(login);
+        System.out.println(password);
         miPerfil = ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(login, password);
-        
-        //Informacion del perfil
+        System.out.println(login);
+        System.out.println(password);
         nombre = miPerfil.getName();
         apellido = miPerfil.getSurname();
         tarjeta = miPerfil.getCreditCard();
         imagen = miPerfil.getImage();
+
+        //Alertas de tarjeta
         Constrains_TextField_2(anyadirT, caracteresConfTelefono);
         Constrains_TextField_2(svcTextfield, caracteresConfTelefono);
-        inicializar_Lisseners_Numero(anyadirT, "La tarjeta ha de contener 16 Digitos.", "Nº de tarjeta valido.", mensage_error1, 16 );
+        inicializar_Lisseners_Numero(anyadirT, "La tarjeta ha de contener 16 Digitos.", "Nº de tarjeta valido.", mensage_error1, 16);
         inicializar_Lisseners_Numero(svcTextfield, "El SVC ha de contener 3 Digitos.", "SVC valido.", mensage_error2, 3);
         //Cambio del texto de los labels
         labelNombre.setText(nombre + ".");
         labelApellido.setText(apellido + ".");
         labelUsuario.setText(login + ":");
         imagenDePerfil.setImage(imagen);
-        if(tarjeta.equals("")){
+        if (tarjeta.equals("")) {
             labelTarjeta.setText("No.");
             anyadirTarjeta.setVisible(true);
             anyadirT.setVisible(true);
             svcLabel.setVisible(true);
             svcTextfield.setVisible(true);
-        }
-        else{
-            labelTarjeta.setText("Si.");
-        }
-    }    
+        } else {
+            labelTarjeta.setText("Si.");}
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        
+        
+    }
 
     @FXML
     private void setTarjeta(ActionEvent event) {
-           miPerfil.setCreditCard(anyadirT.getText());
-           anyadirTarjeta.setVisible(false);
-           anyadirT.setVisible(false);
-           miPerfil.setSvc(svcTextfield.getText());
-           svcLabel.setVisible(false);
-           svcTextfield.setVisible(false);
-           notarjetaLabel.setVisible(false);
-           mensage_error1.setVisible(false);
-           mensage_error2.setVisible(false);
-           labelTarjeta.setText("Si.");
-          
+        miPerfil.setCreditCard(anyadirT.getText());
+        anyadirTarjeta.setVisible(false);
+        anyadirT.setVisible(false);
+        miPerfil.setSvc(svcTextfield.getText());
+        svcLabel.setVisible(false);
+        svcTextfield.setVisible(false);
+        notarjetaLabel.setVisible(false);
+        mensage_error1.setVisible(false);
+        mensage_error2.setVisible(false);
+        labelTarjeta.setText("Si.");
+
     }
 
     @FXML
     private void cerrarSesion(ActionEvent event) throws IOException {
-         Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
-                Scene ventanaS = new Scene(ventanaP);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(ventanaS);
-                stage.setTitle("Login");
-                stage.show();
+        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+        Scene ventanaS = new Scene(ventanaP);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(ventanaS);
+        stage.setTitle("Login");
+        stage.show();
     }
-    
+
     private void Constrains_TextField_2(TextField x, String y) {
         x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (!y.contains(keyEvent.getCharacter())) {
                 keyEvent.consume();
             }
-            
+
         });
     }
-     private void inicializar_Lisseners_Numero(TextField x, String msg, String msg2, Text y, int top) {
+
+    private void inicializar_Lisseners_Numero(TextField x, String msg, String msg2, Text y, int top) {
         x.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((x.getText().length() < top) || (x.getText().length() > top)) && (x.getText().length() != 0)) {
                 y.setFill(Paint.valueOf("#ff0000"));
-               
+
                 y.setText(msg);
             } else if (x.getText().length() == top) {
                 y.setFill(Paint.valueOf("#00a654"));
                 y.setText(msg2);
-               
+
             } else {
-                
+
                 y.setText("");
             }
         });
 
     }
-   
-    
-    }
 
+}

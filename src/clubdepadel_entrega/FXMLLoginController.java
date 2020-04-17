@@ -29,9 +29,7 @@ import javafx.stage.Stage;
  */
 public class FXMLLoginController implements Initializable {
 
-    public static String login_;
-    public static String password_;
-
+   
     @FXML
     private TextField user_Input;
     @FXML
@@ -59,8 +57,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        login_ = user_Input.getText();
-        password_ = password_Input.getText();
+        
         if (ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText()) == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
@@ -70,24 +67,22 @@ public class FXMLLoginController implements Initializable {
 
         } else {
 
-            // Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
-            // Scene ventanaS = new Scene(ventanaP);
-            // Stage stage = new Stage(); 
-            //stage.setScene(ventanaS);
-            //stage.setTitle("Mi Perfil");
-            //stage.show();
+           
             Node source = (Node) event.getSource();
             Stage stage1 = (Stage) source.getScene().getWindow();
-            stage1.close();
+            
             FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
             Parent root = miCargador.load();
             FXMLMiPerfilController controlador = miCargador.<FXMLMiPerfilController>getController();
+            controlador.initPerfil(user_Input.getText(),password_Input.getText() );
+            stage1.close();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Mi Perfil");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
+            
         }
 
     }
