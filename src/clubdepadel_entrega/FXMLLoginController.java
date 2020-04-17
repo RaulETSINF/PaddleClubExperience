@@ -65,11 +65,10 @@ public class FXMLLoginController implements Initializable {
             alert.setContentText("Puede que hayas introducido los datos erroneamente o aun no estes registrado, revisalos o crea una cuenta");
             alert.showAndWait();
         } else {
-            model.Member x = ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText());
             FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/MainApp.fxml"));
             Parent root = miCargador.load();            
             MainAppController controlador = miCargador.<MainAppController>getController();
-            controlador.initMainApp(x);
+            controlador.initMainApp(ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText()));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

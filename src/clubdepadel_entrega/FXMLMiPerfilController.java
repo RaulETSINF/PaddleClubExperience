@@ -6,6 +6,7 @@
 package clubdepadel_entrega;
 
 import java.net.URL;
+import DBAcess.ClubDBAccess;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,6 +55,10 @@ public class FXMLMiPerfilController implements Initializable {
         password_Usuario.setText(x.getPassword());
         targeta_Usuario.setText(x.getCreditCard());
         svc_Usuario.setText(x.getSvc());
+    }
+
+    @FXML
+    private void cerrarSesion(ActionEvent event) {
     }
 
 }
