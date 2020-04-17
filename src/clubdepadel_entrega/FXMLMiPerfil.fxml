@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="821.0" styleClass="Estilo_Fondo" stylesheets="@../Styles/PerfilStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLMiPerfilController">
+<VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="821.0" styleClass="Estilo_Fondo" stylesheets="@../Styles/PerfilStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLMiPerfilController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
@@ -21,12 +21,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="nombre_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="nombre_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>
@@ -35,12 +35,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="apellido_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="apellido_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>
@@ -49,12 +49,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="telefono_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="telefono_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>
@@ -63,12 +63,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="login_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="login_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>
@@ -77,12 +77,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="password_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="password_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>
@@ -91,12 +91,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="510.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Targeta:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Targeta:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="targeta_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="targeta_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>
@@ -105,12 +105,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="610.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC:" wrappingWidth="160.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fx:id="svc_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="svc_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.0">
                <font>
                   <Font size="35.0" />
                </font>

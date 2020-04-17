@@ -50,6 +50,7 @@ public class MainAppController implements Initializable {
         FXMLMiPerfilController controlador = miCargador.<FXMLMiPerfilController>getController();
         controlador.initPerfil(usuario);
         borderPane.setCenter(root);
+        
     }
 
 }

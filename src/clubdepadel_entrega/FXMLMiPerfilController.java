@@ -7,11 +7,18 @@ package clubdepadel_entrega;
 
 import java.net.URL;
 import DBAcess.ClubDBAccess;
+import java.io.IOException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -44,10 +51,21 @@ public class FXMLMiPerfilController implements Initializable {
     }
 
     @FXML
-    private void agregarDatosBancarios(ActionEvent event) {
+    private void agregarDatosBancarios(ActionEvent event) throws IOException {
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLDatosBancarios.fxml"));
+        Parent root = miCargador.load();
+        FXMLDatosBancariosController controlador = miCargador.<FXMLDatosBancariosController>getController();
+        controlador.initDatosBancarios(ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(login_Usuario.getText(), password_Usuario.getText()),targeta_Usuario, svc_Usuario);
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Selector de Imagen de Perfil");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
     
     public void initPerfil(model.Member x) {
+        
         nombre_Usuario.setText(x.getName()); 
         apellido_Usuario.setText(x.getSurname());
         telefono_Usuario.setText(x.getTelephone());
@@ -58,7 +76,15 @@ public class FXMLMiPerfilController implements Initializable {
     }
 
     @FXML
-    private void cerrarSesion(ActionEvent event) {
+    private void cerrarSesion(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setMinHeight(768);
+        stage.setMinWidth(1150);
+        stage.setTitle("Registro");
+        stage.show();
     }
 
 }

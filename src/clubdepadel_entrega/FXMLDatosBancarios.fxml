@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLDatosBancariosController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="133.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Targeta:" wrappingWidth="90.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER">
+               <children>
+                  <TextField fx:id="targeta_Input">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text fx:id="targeta_Text" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="133.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC:" wrappingWidth="90.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER">
+               <children>
+                  <TextField fx:id="svc_Input">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text fx:id="svc_Text" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="133.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#guardar" text="Guardar">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
