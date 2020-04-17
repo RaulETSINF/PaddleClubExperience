@@ -28,8 +28,8 @@ import javafx.stage.Stage;
  */
 public class FXMLLoginController implements Initializable {
     
-    public static String login_ = "";
-    public static String password_ = "";
+    public static String login_ ;
+    public static String password_;
     
     @FXML
     private TextField user_Input;
@@ -76,7 +76,7 @@ public class FXMLLoginController implements Initializable {
             alert.showAndWait();
             Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
             Scene ventanaS = new Scene(ventanaP);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+            Stage stage = new Stage(); 
             stage.setScene(ventanaS);
             stage.setTitle("Mi Perfil");
             stage.show();
@@ -100,10 +100,6 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void verDisponibilidadPistas(ActionEvent event) {
     }
-    public String getLogin(){
-        return login_;
-    }
-    public String getPassword(){
-        return password_;
+    
 }
-}
+
