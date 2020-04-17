@@ -8,10 +8,13 @@ package clubdepadel_entrega;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -35,7 +38,12 @@ public class MainAppController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            inicializarBordePane();
+        } catch (IOException ex) {
+            Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public void initMainApp(model.Member x) {
@@ -51,6 +59,25 @@ public class MainAppController implements Initializable {
         controlador.initPerfil(usuario);
         borderPane.setCenter(root);
         
+    }
+
+    @FXML
+    private void reservarUnaPista(ActionEvent event) throws IOException {
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLReservarPista.fxml"));
+        Parent root = miCargador.load();
+        borderPane.setCenter(root);
+        
+    }
+
+    @FXML
+    private void verMisReservas(ActionEvent event) {
+        
+    }
+    
+    private void inicializarBordePane() throws IOException{
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLReservarPista.fxml"));
+        Parent root = miCargador.load();
+        borderPane.setCenter(root);
     }
 
 }

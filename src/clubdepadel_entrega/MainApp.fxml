@@ -32,7 +32,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="230.0" text="Reserva una pista">
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#reservarUnaPista" prefWidth="230.0" text="Reserva una pista">
                      <font>
                         <Font name="Arial Bold" size="23.0" />
                      </font>
@@ -45,7 +45,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="250.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="230.0" text="Ver mis Reservas">
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#verMisReservas" prefWidth="230.0" text="Ver mis Reservas">
                      <font>
                         <Font name="Arial Bold" size="23.0" />
                      </font>
