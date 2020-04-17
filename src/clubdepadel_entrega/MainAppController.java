@@ -48,7 +48,7 @@ public class MainAppController implements Initializable {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
         Parent root = miCargador.load();
         FXMLMiPerfilController controlador = miCargador.<FXMLMiPerfilController>getController();
-        controlador.initPerfil(usuario.getName(), usuario.getPassword());
+        controlador.initPerfil(usuario);
         borderPane.setCenter(root);
     }
 

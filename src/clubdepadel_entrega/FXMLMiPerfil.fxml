@@ -1,137 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Blend?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox alignment="CENTER" prefHeight="618.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLMiPerfilController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="821.0" styleClass="Estilo_Fondo" stylesheets="@../Styles/PerfilStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLMiPerfilController">
    <children>
-      <HBox alignment="CENTER_RIGHT" prefHeight="137.0" prefWidth="736.0" spacing="50.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER" prefHeight="137.0" prefWidth="273.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="200.0" text="Mi Perfil:" textAlignment="JUSTIFY">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="137.0" prefWidth="290.0" spacing="10.0">
-               <children>
-                  <Label fx:id="labelUsuario" alignment="CENTER" prefHeight="34.0" prefWidth="113.0" text="Usuario:">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="imagenDePerfil" fitHeight="108.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="50.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mi Perfil">
+               <font>
+                  <Font name="Arial Bold" size="56.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="nombre_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="apellido_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="telefono_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="login_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="password_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="510.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Targeta:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="targeta_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="610.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+            <Text fx:id="svc_Usuario" layoutX="357.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="682.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#agregarDatosBancarios" text="Agregar Datos Bancarios">
+               <font>
+                  <Font size="29.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="Estilo_Botones" />
+                  <String fx:value="texto_blanco" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="692.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion">
+               <font>
+                  <Font size="29.0" />
+               </font>
                <HBox.margin>
-                  <Insets />
+                  <Insets bottom="15.0" />
                </HBox.margin>
-            </HBox>
+               <styleClass>
+                  <String fx:value="Estilo_Botones" />
+                  <String fx:value="texto_blanco" />
+               </styleClass>
+            </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="419.0" prefWidth="357.0">
-         <children>
-            <VBox prefHeight="292.0" prefWidth="124.0" spacing="10.0">
-               <children>
-                  <Label text="Nombre:">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="23.0" layoutY="10.0" text="Apellido:">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="23.0" layoutY="48.0" text="Tarjeta:">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="notarjetaLabel" prefHeight="44.0" prefWidth="103.0" text="Nº de Tarjeta:">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="svcLabel" prefHeight="43.0" prefWidth="44.0" text="SVC:">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="anyadirTarjeta" mnemonicParsing="false" onAction="#setTarjeta" prefHeight="42.0" prefWidth="120.0" text="Añadir tarjeta">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox prefHeight="286.0" prefWidth="184.0" spacing="10.0">
-               <children>
-                  <Label fx:id="labelNombre" prefHeight="32.0" prefWidth="242.0" text="Label">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelApellido" layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="125.0" text="Label">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelTarjeta" layoutX="10.0" layoutY="48.0" prefHeight="32.0" prefWidth="148.0" text="Label">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="anyadirT" prefHeight="40.0" prefWidth="145.0" />
-                  <TextField fx:id="svcTextfield" prefHeight="40.0" prefWidth="145.0" />
-                  <Text fx:id="mensage_error1" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="155.13671875">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="mensage_error2" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.0">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </VBox>
-         </children>
-      </HBox>
-      <Button fx:id="cerrarSesion" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesión">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
    </children>
 </VBox>
