@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -27,10 +28,10 @@ import javafx.stage.Stage;
  * @author RaulP
  */
 public class FXMLLoginController implements Initializable {
-    
-    public static String login_ ;
+
+    public static String login_;
     public static String password_;
-    
+
     @FXML
     private TextField user_Input;
     @FXML
@@ -66,31 +67,37 @@ public class FXMLLoginController implements Initializable {
             alert.setHeaderText("Error de Inicio de Sesión");
             alert.setContentText("Puede que hayas introducido los datos erroneamente o aun no estes registrado, revisalos o crea una cuenta");
             alert.showAndWait();
-            
 
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Dialogo de confirmación");
-            alert.setHeaderText("Inicio de Sesion Correcto");
-            alert.setContentText("Bienvenido");
-            alert.showAndWait();
-            Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
-            Scene ventanaS = new Scene(ventanaP);
-            Stage stage = new Stage(); 
-            stage.setScene(ventanaS);
-            stage.setTitle("Mi Perfil");
-            stage.show();
-        } 
-        
-    }
 
+            // Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
+            // Scene ventanaS = new Scene(ventanaP);
+            // Stage stage = new Stage(); 
+            //stage.setScene(ventanaS);
+            //stage.setTitle("Mi Perfil");
+            //stage.show();
+            Node source = (Node) event.getSource();
+            Stage stage1 = (Stage) source.getScene().getWindow();
+            stage1.close();
+            FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
+            Parent root = miCargador.load();
+            FXMLMiPerfilController controlador = miCargador.<FXMLMiPerfilController>getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Mi Perfil");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        }
+
+    }
 
     @FXML
     private void resgistrarse(ActionEvent event) throws IOException {
-        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));    
+        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
         Scene ventanaS = new Scene(ventanaP);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();    
-        stage.setScene(ventanaS);     
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(ventanaS);
         stage.setMinHeight(768);
         stage.setMinWidth(1150);
         stage.setTitle("Registro");
@@ -100,6 +107,5 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void verDisponibilidadPistas(ActionEvent event) {
     }
-    
-}
 
+}
