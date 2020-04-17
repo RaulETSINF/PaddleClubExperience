@@ -81,11 +81,9 @@ public class FXMLMiPerfilController implements Initializable {
         this.password = y;
         
         
-        System.out.println(login);
-        System.out.println(password);
+        
         miPerfil = ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(login, password);
-        System.out.println(login);
-        System.out.println(password);
+        
         nombre = miPerfil.getName();
         apellido = miPerfil.getSurname();
         tarjeta = miPerfil.getCreditCard();
@@ -114,9 +112,11 @@ public class FXMLMiPerfilController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
+       
         
     }
+    
+   
 
     @FXML
     private void setTarjeta(ActionEvent event) {
@@ -130,6 +130,7 @@ public class FXMLMiPerfilController implements Initializable {
         mensage_error1.setVisible(false);
         mensage_error2.setVisible(false);
         labelTarjeta.setText("Si.");
+        
 
     }
 
