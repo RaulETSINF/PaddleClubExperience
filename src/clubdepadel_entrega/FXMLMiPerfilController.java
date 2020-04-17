@@ -11,11 +11,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import DBAcess.ClubDBAccess;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.Member;
 /**
  * FXML Controller class
@@ -44,11 +50,19 @@ public class FXMLMiPerfilController implements Initializable {
     private Label labelApellido;
     @FXML
     private Label labelTarjeta;
+    
+    
     private Button añadirTarjeta;
     @FXML
     private Button anyadirTarjeta;
     @FXML
     private TextField anyadirT;
+    @FXML
+    private Button cerrarSesion;
+    @FXML
+    private Label svcLabel;
+    @FXML
+    private TextField svcTextfield;
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,22 +87,35 @@ public class FXMLMiPerfilController implements Initializable {
             labelTarjeta.setText("No.");
             anyadirTarjeta.setVisible(true);
             anyadirT.setVisible(true);
+            svcLabel.setVisible(true);
+            svcTextfield.setVisible(true);
         }
         else{
             labelTarjeta.setText("Si.");
         }
     }    
 
-    private void getInfo(ActionEvent event) {
-        System.out.println(login + " " + password );
-    }
 
     @FXML
     private void setTarjeta(ActionEvent event) {
            miPerfil.setCreditCard(anyadirT.getText());
-           labelTarjeta.setText("Si.");
            anyadirTarjeta.setVisible(false);
            anyadirT.setVisible(false);
+           miPerfil.setSvc(svcTextfield.getText());
+           svcLabel.setVisible(false);
+           svcTextfield.setVisible(false);
+           labelTarjeta.setText("Si.");
+           
+    }
+
+    @FXML
+    private void cerrarSesion(ActionEvent event) throws IOException {
+         Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+                Scene ventanaS = new Scene(ventanaP);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(ventanaS);
+                stage.setTitle("Login");
+                stage.show();
     }
     
 }
