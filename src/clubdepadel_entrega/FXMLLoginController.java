@@ -64,25 +64,17 @@ public class FXMLLoginController implements Initializable {
             alert.setHeaderText("Error de Inicio de Sesión");
             alert.setContentText("Puede que hayas introducido los datos erroneamente o aun no estes registrado, revisalos o crea una cuenta");
             alert.showAndWait();
-
         } else {
-
-           
-            Node source = (Node) event.getSource();
-            Stage stage1 = (Stage) source.getScene().getWindow();
-            
-            FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
-            Parent root = miCargador.load();
-            FXMLMiPerfilController controlador = miCargador.<FXMLMiPerfilController>getController();
-            controlador.initPerfil(user_Input.getText(),password_Input.getText() );
-            stage1.close();
+            model.Member x = ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText());
+            FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/MainApp.fxml"));
+            Parent root = miCargador.load();            
+            MainAppController controlador = miCargador.<MainAppController>getController();
+            controlador.initMainApp(x);
             Scene scene = new Scene(root);
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Mi Perfil");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-            
+            stage.show();     
         }
 
     }
