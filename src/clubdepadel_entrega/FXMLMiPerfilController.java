@@ -21,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Member;
 /**
@@ -33,6 +35,10 @@ public class FXMLMiPerfilController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private String caracteresConfTelefono = "1234567890";
+
+
     private Member miPerfil = new Member();
     private String login;
     private String password;
@@ -63,6 +69,12 @@ public class FXMLMiPerfilController implements Initializable {
     private Label svcLabel;
     @FXML
     private TextField svcTextfield;
+    @FXML
+    private Text mensage_error1;
+    @FXML
+    private Text mensage_error2;
+    @FXML
+    private Label notarjetaLabel;
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,7 +89,10 @@ public class FXMLMiPerfilController implements Initializable {
         apellido = miPerfil.getSurname();
         tarjeta = miPerfil.getCreditCard();
         imagen = miPerfil.getImage();
-        
+        Constrains_TextField_2(anyadirT, caracteresConfTelefono);
+        Constrains_TextField_2(svcTextfield, caracteresConfTelefono);
+        inicializar_Lisseners_Numero(anyadirT, "La tarjeta ha de contener 16 Digitos.", "Nº de tarjeta valido.", mensage_error1, 16 );
+        inicializar_Lisseners_Numero(svcTextfield, "El SVC ha de contener 3 Digitos.", "SVC valido.", mensage_error2, 3);
         //Cambio del texto de los labels
         labelNombre.setText(nombre + ".");
         labelApellido.setText(apellido + ".");
@@ -104,8 +119,11 @@ public class FXMLMiPerfilController implements Initializable {
            miPerfil.setSvc(svcTextfield.getText());
            svcLabel.setVisible(false);
            svcTextfield.setVisible(false);
+           notarjetaLabel.setVisible(false);
+           mensage_error1.setVisible(false);
+           mensage_error2.setVisible(false);
            labelTarjeta.setText("Si.");
-           
+          
     }
 
     @FXML
@@ -118,4 +136,32 @@ public class FXMLMiPerfilController implements Initializable {
                 stage.show();
     }
     
-}
+    private void Constrains_TextField_2(TextField x, String y) {
+        x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (!y.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+            
+        });
+    }
+     private void inicializar_Lisseners_Numero(TextField x, String msg, String msg2, Text y, int top) {
+        x.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (((x.getText().length() < top) || (x.getText().length() > top)) && (x.getText().length() != 0)) {
+                y.setFill(Paint.valueOf("#ff0000"));
+               
+                y.setText(msg);
+            } else if (x.getText().length() == top) {
+                y.setFill(Paint.valueOf("#00a654"));
+                y.setText(msg2);
+               
+            } else {
+                
+                y.setText("");
+            }
+        });
+
+    }
+   
+    
+    }
+

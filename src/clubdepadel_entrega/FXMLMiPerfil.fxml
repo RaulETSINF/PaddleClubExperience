@@ -11,10 +11,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLMiPerfilController">
    <children>
-      <Pane prefHeight="768.0" prefWidth="1167.0">
+      <Pane layoutX="14.0" layoutY="-14.0" prefHeight="768.0" prefWidth="1167.0">
          <children>
             <Label layoutX="133.0" layoutY="100.0" prefHeight="45.0" prefWidth="200.0" text="Mi Perfil:" textAlignment="JUSTIFY">
                <font>
@@ -30,9 +31,9 @@
                </font>
             </Label>
             <ImageView fx:id="imagenDePerfil" fitHeight="122.0" fitWidth="128.0" layoutX="975.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox layoutX="156.0" layoutY="158.0" prefHeight="292.0" prefWidth="274.0">
+            <HBox layoutX="156.0" layoutY="158.0" prefHeight="419.0" prefWidth="357.0">
                <children>
-                  <VBox prefHeight="292.0" prefWidth="100.0" spacing="10.0">
+                  <VBox prefHeight="292.0" prefWidth="124.0" spacing="10.0">
                      <children>
                         <Label text="Nombre:">
                            <font>
@@ -49,15 +50,24 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="anyadirT" prefHeight="36.0" prefWidth="100.0" visible="false" />
-                        <Label fx:id="svcLabel" text="SVC:" visible="false">
+                        <Label fx:id="notarjetaLabel" prefHeight="44.0" prefWidth="103.0" text="Nº de Tarjeta:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="svcLabel" prefHeight="43.0" prefWidth="44.0" text="SVC:">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
+                        <Button fx:id="anyadirTarjeta" mnemonicParsing="false" onAction="#setTarjeta" prefHeight="42.0" prefWidth="120.0" text="Añadir tarjeta">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
-                  <VBox prefHeight="292.0" prefWidth="159.0" spacing="10.0">
+                  <VBox prefHeight="286.0" prefWidth="184.0" spacing="10.0">
                      <children>
                         <Label fx:id="labelNombre" prefHeight="32.0" prefWidth="242.0" text="Label">
                            <font>
@@ -74,12 +84,21 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Button fx:id="anyadirTarjeta" mnemonicParsing="false" onAction="#setTarjeta" prefHeight="34.0" prefWidth="117.0" text="Añadir tarjeta" visible="false">
+                        <TextField fx:id="anyadirT" prefHeight="40.0" prefWidth="145.0" />
+                        <TextField fx:id="svcTextfield" prefHeight="40.0" prefWidth="145.0" />
+                        <Text fx:id="mensage_error1" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="155.13671875">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
                            <font>
-                              <Font size="15.0" />
+                              <Font size="22.0" />
                            </font>
-                        </Button>
-                        <TextField fx:id="svcTextfield" prefHeight="33.0" prefWidth="81.0" visible="false" />
+                        </Text>
+                        <Text fx:id="mensage_error2" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
                      </children>
                      <opaqueInsets>
                         <Insets />
