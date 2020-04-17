@@ -121,14 +121,9 @@ public class FXMLMiPerfilController implements Initializable {
     @FXML
     private void setTarjeta(ActionEvent event) {
         miPerfil.setCreditCard(anyadirT.getText());
-        anyadirTarjeta.setVisible(false);
-        anyadirT.setVisible(false);
+       
         miPerfil.setSvc(svcTextfield.getText());
-        svcLabel.setVisible(false);
-        svcTextfield.setVisible(false);
-        notarjetaLabel.setVisible(false);
-        mensage_error1.setVisible(false);
-        mensage_error2.setVisible(false);
+        
         labelTarjeta.setText("Si.");
         
 
