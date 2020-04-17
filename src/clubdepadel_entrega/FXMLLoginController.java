@@ -27,7 +27,10 @@ import javafx.stage.Stage;
  * @author RaulP
  */
 public class FXMLLoginController implements Initializable {
-
+    
+    public static String login_ = "";
+    public static String password_ = "";
+    
     @FXML
     private TextField user_Input;
     @FXML
@@ -54,13 +57,16 @@ public class FXMLLoginController implements Initializable {
     }
 
     @FXML
-    private void login(ActionEvent event) {
+    private void login(ActionEvent event) throws IOException {
+        login_ = user_Input.getText();
+        password_ = password_Input.getText();
         if (ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText()) == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
             alert.setHeaderText("Error de Inicio de Sesión");
             alert.setContentText("Puede que hayas introducido los datos erroneamente o aun no estes registrado, revisalos o crea una cuenta");
             alert.showAndWait();
+            
 
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -68,7 +74,16 @@ public class FXMLLoginController implements Initializable {
             alert.setHeaderText("Inicio de Sesion Correcto");
             alert.setContentText("Bienvenido");
             alert.showAndWait();
-        }
+            Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
+            Scene ventanaS = new Scene(ventanaP);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow(); 
+            stage.setScene(ventanaS);
+            stage.setMinHeight(768);
+            stage.setMinWidth(1150);
+            stage.setTitle("Mi Perfil");
+            stage.show();
+        } 
+        
     }
 
 
@@ -87,5 +102,10 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void verDisponibilidadPistas(ActionEvent event) {
     }
-    
+    public String getLogin(){
+        return login_;
+    }
+    public String getPassword(){
+        return password_;
+}
 }
