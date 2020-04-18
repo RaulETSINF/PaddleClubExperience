@@ -29,22 +29,22 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Los campos Marcados con un ( * ) son obligatorios">
                <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font name="Arial" size="22.0" />
                </font>
             </Text>
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="344.0" prefHeight="100.0" prefWidth="1247.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre*" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
-                  <Insets />
+                  <Insets left="-50.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="nombre_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Nombre" styleClass="Estilo_textField">
+            <TextField fx:id="nombre_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Insertar Nombre" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -56,7 +56,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="394.0" prefHeight="100.0" prefWidth="1263.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido*" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
@@ -73,15 +73,15 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="444.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono*" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
-                  <Insets left="410.0" />
+                  <Insets left="360.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="telefono_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar Teléfono" styleClass="Estilo_textField">
+            <TextField fx:id="telefono_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Insertar Teléfono" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -103,7 +103,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="494.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login*" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
@@ -129,7 +129,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="544.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
@@ -155,7 +155,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="594.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="NEVER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Tarjeta" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Tarjeta" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
@@ -181,15 +181,15 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SVC" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
                <HBox.margin>
-                  <Insets left="410.0" />
+                  <Insets left="344.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="svc_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Insertar SVC de la Tarjeta" styleClass="Estilo_textField">
+            <TextField fx:id="svc_Input" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="185.0" promptText="SVC de la Tarjeta" styleClass="Estilo_textField">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -209,7 +209,7 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Imagen de Perfil" wrappingWidth="270.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Imagen de Perfil" textAlignment="RIGHT" wrappingWidth="270.0">
                      <font>
                         <Font name="Arial Bold" size="34.0" />
                      </font>

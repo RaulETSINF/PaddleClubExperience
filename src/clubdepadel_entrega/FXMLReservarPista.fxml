@@ -38,7 +38,7 @@
       </HBox>
       <TableView fx:id="tableViewBooking" prefHeight="551.0" prefWidth="765.0" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn prefWidth="75.0" text="Hora" />
+          <TableColumn fx:id="horas" prefWidth="75.0" text="Hora" />
           <TableColumn prefWidth="84.0" text="Pista 1" />
             <TableColumn prefWidth="75.0" text="Pista 2" />
             <TableColumn prefWidth="75.0" text="Pista 3" />
