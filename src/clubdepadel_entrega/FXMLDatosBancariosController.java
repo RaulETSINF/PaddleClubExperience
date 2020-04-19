@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Member;
@@ -31,19 +32,24 @@ public class FXMLDatosBancariosController implements Initializable {
     private TextField svc_Input;
     @FXML
     private Text svc_Text;
-    
+
     private Text auxTrg = new Text("");
     private Text auxSvc = new Text("");
+    String caracteresConfTelefono = "1234567890";
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Constrains_TextField_2(svc_Input, caracteresConfTelefono);
+        Constrains_TextField_2(targeta_Input, caracteresConfTelefono);
         targeta_Input.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((targeta_Input.getText().length() != 16)) && (targeta_Input.getText().length() != 0)) {
+                targeta_Text.setFill(Paint.valueOf("#ff0000"));
                 targeta_Text.setText("Ha de contener 16 Dígitos");
             } else if (targeta_Input.getText().length() == 16) {
+                targeta_Text.setFill(Paint.valueOf("#00a654"));
                 targeta_Text.setText("Targeta Valida");
             } else {
                 targeta_Text.setText("");
@@ -51,8 +57,10 @@ public class FXMLDatosBancariosController implements Initializable {
         });
         svc_Input.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((svc_Input.getText().length() != 3)) && (svc_Input.getText().length() != 0)) {
-                svc_Text.setText("Ha de contener 16 Dígitos");
+                svc_Text.setFill(Paint.valueOf("#ff0000"));
+                svc_Text.setText("Ha de contener 3 Dígitos");
             } else if (svc_Input.getText().length() == 3) {
+                svc_Text.setFill(Paint.valueOf("#00a654"));
                 svc_Text.setText("SVC Valido");
             } else {
                 svc_Text.setText("");
@@ -63,7 +71,7 @@ public class FXMLDatosBancariosController implements Initializable {
     public void initDatosBancarios(Member x, Text trg, Text svc) {
         targeta_Input.setText(x.getCreditCard());
         svc_Input.setText(x.getSvc());
-        
+
         auxTrg.textProperty().addListener((observable, oldValue, newValue) -> {
             x.setCreditCard(auxTrg.getText());
             trg.setText(auxTrg.getText());
@@ -83,6 +91,14 @@ public class FXMLDatosBancariosController implements Initializable {
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
         }
+    }
+
+    private void Constrains_TextField_2(TextField x, String y) {
+        x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
+            if (!y.contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
     }
 
 }

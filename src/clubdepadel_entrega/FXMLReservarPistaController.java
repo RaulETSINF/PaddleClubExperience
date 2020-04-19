@@ -6,28 +6,28 @@
 package clubdepadel_entrega;
 
 import java.net.URL;
+import java.time.DayOfWeek;
+import java.time.Duration;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
-import DBAcess.ClubDBAccess;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.util.Observable;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
+import javafx.scene.Node;
 import javafx.scene.control.DateCell;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.converter.LocalDateTimeStringConverter;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import model.Booking;
 import model.Court;
 
@@ -41,39 +41,27 @@ public class FXMLReservarPistaController implements Initializable {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private TableView<Booking> tableViewBooking;
-
-    ClubDBAccess clubDBAccess;
-    ObservableList<Booking> observableBookings;
-    @FXML
-    private TableColumn<Booking, Booking> horas;
-
-    LocalDate x = LocalDate.of(2020, Month.MARCH, 19);
-    LocalTime y = LocalTime.of(14, 0);
-
+    private GridPane gridPane;
+    private final LocalTime firstSlotStart = LocalTime.of(9, 0);
+    private final Duration slotLength = Duration.ofMinutes(90);
+    private final LocalTime lastSlotStart = LocalTime.of(21, 0);
+    
+    private List<List<TimeSlot>> timeSlots = new ArrayList<>();
+    private static final PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
+    private ObjectProperty<TimeSlot> timeSlotSelected;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clubDBAccess = ClubDBAccess.getSingletonClubDBAccess();
-        observableBookings = FXCollections.observableList(clubDBAccess.getBookings());
-        horas.setCellValueFactory(param -> new SimpleObjectProperty<Booking>(param.getValue()));
-        horas.setCellFactory(v -> {
-            return new TableCell<Booking, Booking>() {
-                @Override
-                protected void updateItem(Booking item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (item == null || empty) {
-                        setText(null);
-                    } else {
-                        setText(""+item.getFromTime());
-                    }
-                }
-            };
+        timeSlotSelected = new SimpleObjectProperty<>();
+        datePicker.setValue(LocalDate.now());
+        setTimeSlotsGrid(datePicker.getValue());
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            setTimeSlotsGrid(newValue);
         });
-        clubDBAccess.getBookings().add(new Booking(LocalDateTime.MIN, LocalDate.MAX, LocalTime.NOON, true, clubDBAccess.getCourts().get(0), clubDBAccess.getMembers().get(0)));
-        tableViewBooking.setItems(observableBookings);
+        
         datePicker.setDayCellFactory((DatePicker picker) -> {
             return new DateCell() {
                 @Override
@@ -85,15 +73,85 @@ public class FXMLReservarPistaController implements Initializable {
             };
         });
     }
+    
+    private void setTimeSlotsGrid(LocalDate date) {
+        
+    }
 
     @FXML
-
     private void inspeccionar(ActionEvent event) {
-        clubDBAccess.getBookings().removeAll(observableBookings);
     }
 
     @FXML
     private void reservar(ActionEvent event) {
     }
+    
+    public class TimeSlot {
 
+        private final LocalDateTime start;
+        private final Duration duration;
+        protected final Pane view;
+        private Booking booking;
+        private Court court;
+
+        private final BooleanProperty selected = new SimpleBooleanProperty();
+
+        public final BooleanProperty selectedProperty() {
+            return selected;
+        }
+
+        public final boolean isSelected() {
+            return selectedProperty().get();
+        }
+
+        public final void setSelected(boolean selected) {
+            selectedProperty().set(selected);
+        }
+
+        public TimeSlot(LocalDateTime start, Duration duration, Booking booking, Court court) {
+            this.start = start;
+            this.duration = duration;
+            this.booking = booking;
+            this.court = court;
+            view = new Pane();
+            view.getStyleClass().add("time-slot");
+            selectedProperty().addListener((observable, oldValue, newValue) -> {
+                view.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, newValue);
+            });
+        }
+
+        public LocalDateTime getStart() {
+            return start;
+        }
+
+        public LocalTime getTime() {
+            return start.toLocalTime();
+        }
+
+        public LocalDate getDate() {
+            return start.toLocalDate();
+        }
+
+        public DayOfWeek getDayOfWeek() {
+            return start.getDayOfWeek();
+        }
+
+        public Duration getDuration() {
+            return duration;
+        }
+
+        public Node getView() {
+            return view;
+        }
+        
+        public Booking getBooking(){
+            return booking;
+        }
+        
+        public Court getCourt(){
+            return court;
+        }
+
+    }
+    
 }
