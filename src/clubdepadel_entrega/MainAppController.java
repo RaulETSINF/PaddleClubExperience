@@ -55,7 +55,7 @@ public class MainAppController implements Initializable {
     }
 
     public void initMainApp(model.Member x) {
-        clubDBAccess.getBookings().add(new Booking(LocalDateTime.now(), LocalDate.of(2020, 4, 21), LocalTime.of(9, 00), true, clubDBAccess.getCourts().get(0), x));
+        //clubDBAccess.getBookings().add(new Booking(LocalDateTime.now(), LocalDate.of(2020, 4, 21), LocalTime.of(9, 00), true, clubDBAccess.getCourts().get(0), x));
         imagen_perfil.setImage(x.getImage());
         usuario = x;
     }

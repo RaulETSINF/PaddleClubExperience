@@ -180,4 +180,8 @@ public class FXMLVerMisReservasController implements Initializable {
             }
         }
     }
+
+    @FXML
+    private void Prueba(ActionEvent event) {
+    }
 }
