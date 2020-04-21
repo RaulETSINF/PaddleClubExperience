@@ -32,7 +32,7 @@ import model.Member;
 /**
  * FXML Controller class
  *
- * @author awset
+ * @author Raul P
  */
 public class FXMLRegistroController implements Initializable {
 

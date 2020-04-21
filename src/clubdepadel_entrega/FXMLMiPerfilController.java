@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author awset
+ * @author Raul P
  */
 public class FXMLMiPerfilController implements Initializable {
 
