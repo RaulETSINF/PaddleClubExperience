@@ -12,21 +12,16 @@
 
 <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="795.0" styleClass="Estilo_Fondo" stylesheets="@../Styles/ReservaPistaStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clubdepadel_entrega.FXMLVerMisReservasController">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reservar Una Pista">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ver mis reservas">
                <font>
                   <Font name="Arial Bold" size="50.0" />
                </font>
             </Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <VBox alignment="CENTER" spacing="10.0" />
-         </children>
-      </HBox>
-      <TableView fx:id="tableView" prefHeight="481.0" prefWidth="795.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="tableView" prefHeight="575.0" prefWidth="765.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="diaColum" prefWidth="75.0" text="Dia" />
             <TableColumn fx:id="inicioColum" prefWidth="75.0" text="Inicio" />
@@ -41,18 +36,9 @@
             <Insets left="15.0" right="15.0" />
          </VBox.margin>
       </TableView>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="NEVER">
          <children>
             <Button mnemonicParsing="false" onAction="#Eliminar" prefWidth="181.0" text="Eliminar">
-               <font>
-                  <Font name="Arial Bold" size="24.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="Estilo_Botones" />
-                  <String fx:value="texto_blanco" />
-               </styleClass>
-            </Button>
-            <Button layoutX="317.0" layoutY="37.0" mnemonicParsing="false" onAction="#Prueba" prefWidth="181.0" text="Test">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

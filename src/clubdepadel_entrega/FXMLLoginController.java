@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -29,7 +28,6 @@ import javafx.stage.Stage;
  */
 public class FXMLLoginController implements Initializable {
 
-   
     @FXML
     private TextField user_Input;
     @FXML
@@ -42,6 +40,7 @@ public class FXMLLoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //ClubDBAccess.getSingletonClubDBAccess().getBookings().remove(0);
         user_Input.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (caracteresConf.contains(keyEvent.getCharacter())) {
                 keyEvent.consume();
@@ -57,7 +56,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        
+
         if (ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText()) == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
@@ -66,14 +65,16 @@ public class FXMLLoginController implements Initializable {
             alert.showAndWait();
         } else {
             FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/MainApp.fxml"));
-            Parent root = miCargador.load();            
+            Parent root = miCargador.load();
             MainAppController controlador = miCargador.<MainAppController>getController();
             controlador.initMainApp(ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(user_Input.getText(), password_Input.getText()));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
+            stage.setMinHeight(800);
+            stage.setMinWidth(1050);
             stage.setTitle("Mi Perfil");
-            stage.show();     
+            stage.show();
         }
 
     }
@@ -91,7 +92,15 @@ public class FXMLLoginController implements Initializable {
     }
 
     @FXML
-    private void verDisponibilidadPistas(ActionEvent event) {
+    private void verDisponibilidadPistas(ActionEvent event) throws IOException {
+        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLVerDisponibilidad.fxml"));
+        Scene ventanaS = new Scene(ventanaP);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(ventanaS);
+        stage.setMinHeight(768);
+        stage.setMinWidth(1150);
+        stage.setTitle("Ver Disponibilidad de las Pistas");
+        stage.show();
     }
 
 }

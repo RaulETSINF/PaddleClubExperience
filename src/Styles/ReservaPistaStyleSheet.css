@@ -20,3 +20,22 @@ and open the template in the editor.
 .texto_blanco {
     -fx-text-fill: #ffffff;
 }
+
+.time-slot {
+	-fx-background-color: black, white ;
+	-fx-background-insets: 0, 1 1 0 0 ;
+}
+
+.time-slot-libre{
+    -fx-background-color: black, indianred ;
+	-fx-background-insets: 0, 1 1 0 0 ;
+}
+
+.time-slot-user{
+    -fx-background-color: black, #019690 ;
+    -fx-background-insets: 0, 1 1 0 0 ;
+}
+
+.time-slot:selected {
+	-fx-background-color: cornflowerblue;
+}

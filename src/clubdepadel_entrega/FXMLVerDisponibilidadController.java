@@ -6,59 +6,58 @@
 package clubdepadel_entrega;
 
 import DBAcess.ClubDBAccess;
+import java.io.IOException;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.Duration;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.ResourceBundle;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DateCell;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.Booking;
 import model.Court;
-import model.Member;
 
 /**
  * FXML Controller class
  *
  * @author RaulP
  */
-public class FXMLReservarPistaController implements Initializable {
+public class FXMLVerDisponibilidadController implements Initializable {
 
     @FXML
-    private DatePicker datePicker;
+    private TextField textField;
     @FXML
     private GridPane gridPane;
-
-    private Member persona;
-    private final LocalTime firstSlotStart = LocalTime.of(9, 0);
-    private final Duration slotLength = Duration.ofMinutes(90);
-    private final LocalTime lastSlotStart = LocalTime.of(21, 0);
-
     private static final PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
     private List<TimeSlot> timeSlots = new ArrayList<>();
     private ObjectProperty<TimeSlot> timeSlotSelected;
+    private final LocalTime firstSlotStart = LocalTime.of(9, 0);
+    private final Duration slotLength = Duration.ofMinutes(90);
+    private final LocalTime lastSlotStart = LocalTime.of(21, 0);
+    @FXML
+    private Label label;
     @FXML
     private Label slotSelected;
 
@@ -67,45 +66,20 @@ public class FXMLReservarPistaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        label.setText(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
         timeSlotSelected = new SimpleObjectProperty<>();
+        setTimeSlotsGrid(LocalDate.now());
 
-        datePicker.setValue(LocalDate.now());
-
-        setTimeSlotsGrid(datePicker.getValue());
-
-        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
-            setTimeSlotsGrid(newValue);
-        });
-
-        datePicker.setDayCellFactory((DatePicker picker) -> {
-            return new DateCell() {
-                @Override
-                public void updateItem(LocalDate date, boolean empty) {
-                    super.updateItem(date, empty);
-                    LocalDate today = LocalDate.now();
-                    setDisable(empty || date.compareTo(today) < 0);
-                }
-            };
-        });
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
-        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("E MMM d");
-        timeSlotSelected.addListener((a, b, c) -> {
-            if (c == null) {
-                slotSelected.setText("");
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (ClubDBAccess.getSingletonClubDBAccess().getUserBookings(textField.getText()) != null) {
+                setTimeSlotsGrid(LocalDate.now());
             } else {
-
-                slotSelected.setText(c.getDate().format(dayFormatter)
-                        + "-"
-                        + c.getStart().format(timeFormatter)
-                        + "-" + timeSlotSelected.getValue().getNameNode());
-
+                for (TimeSlot timeSlot : timeSlots) {
+                    ObservableList<Node> childern = gridPane.getChildren();
+                    childern.remove(timeSlot.getView());
+                }
             }
         });
-    }
-
-    public void initReservar(Member x) {
-        persona = x;
     }
 
     private void setTimeSlotsGrid(LocalDate date) {
@@ -132,13 +106,15 @@ public class FXMLReservarPistaController implements Initializable {
             aux++;
         }
 
-        ArrayList<Booking> reservasDia = ClubDBAccess.getSingletonClubDBAccess().getForDayBookings(datePicker.getValue());
+        ArrayList<Booking> reservasDia = ClubDBAccess.getSingletonClubDBAccess().getUserBookings(textField.getText());
         for (Booking reserva : reservasDia) {
             for (TimeSlot timeSlot : timeSlots) {
-                if ((timeSlot.getTime().equals(reserva.getFromTime())) && (timeSlot.getNameNode().equals(reserva.getCourt().getName()))) {
+                if ((timeSlot.getTime().equals(reserva.getFromTime())) && (timeSlot.getNameNode().equals(reserva.getCourt().getName())) && (reserva.getMadeForDay().equals(LocalDate.now()))) {
                     if (timeSlot.getView().getStyleClass().contains("time-slot")) {
-                        timeSlot.getView().getStyleClass().remove("time-slot");
-                        timeSlot.getView().getStyleClass().add("time-slot-libre");
+                        if (reserva.getMember().getLogin().equals(textField.getText())) {
+                            timeSlot.getView().getStyleClass().remove("time-slot");
+                            timeSlot.getView().getStyleClass().add("time-slot-libre");
+                        }
                     }
                     timeSlot.setSelected(true);
                 }
@@ -157,44 +133,18 @@ public class FXMLReservarPistaController implements Initializable {
             //actualizamos el label Dia-Hora-Pista, esto es ad hoc,  para mi diseño
             timeSlotSelected.setValue(timeSlot);
         });
-
     }
 
     @FXML
-    private void reservar(ActionEvent event) {
-        if (timeSlotSelected != null) {
-
-            if (timeSlotSelected.getValue().getView().getStyleClass().contains("time-slot-libre")) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Dialogo de confirmación");
-                alert.setHeaderText("Error de Registro");
-                alert.setContentText("Ya se ha realizado una reserva para esta fecha");
-                alert.showAndWait();
-            } else {
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-                alerta.setTitle("SlotTime");
-                alerta.setHeaderText("Confirma la selección");
-                alerta.setContentText("Quieres reservar esta pista?");
-                Optional<ButtonType> result = alerta.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    if (ClubDBAccess.getSingletonClubDBAccess().hasCreditCard(persona.getLogin())) {
-                        ClubDBAccess.getSingletonClubDBAccess().getBookings().add(new Booking(LocalDateTime.now(), datePicker.getValue(), timeSlotSelected.getValue().getTime(), true, timeSlotSelected.getValue().getCourt(), ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(persona.getLogin(), persona.getPassword())));
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Dialogo de confirmación");
-                        alert.setHeaderText("Reserva Realizada con éxito");
-                        alert.setContentText("No hay datos Bancarios, La reserva se anotará como No Pagada");
-                        alert.showAndWait();
-                        ClubDBAccess.getSingletonClubDBAccess().getBookings().add(new Booking(LocalDateTime.now(), datePicker.getValue(), timeSlotSelected.getValue().getTime(), false, timeSlotSelected.getValue().getCourt(), ClubDBAccess.getSingletonClubDBAccess().getMemberByCredentials(persona.getLogin(), persona.getPassword())));
-                    }
-                    ObservableList<String> styles = timeSlotSelected.getValue().getView().getStyleClass();
-                    if (styles.contains("time-slot")) {
-                        styles.remove("time-slot");
-                        styles.add("time-slot-libre");
-                    }
-                }
-            }
-        }
+    private void volver(ActionEvent event) throws IOException {
+        Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+        Scene ventanaS = new Scene(ventanaP);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(ventanaS);
+        stage.setMinHeight(768);
+        stage.setMinWidth(1024);
+        stage.setTitle("Login");
+        stage.show();
     }
 
     public class TimeSlot {

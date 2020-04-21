@@ -22,11 +22,13 @@ import DBAcess.ClubDBAccess;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAmount;
+import java.util.Optional;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 
 /**
@@ -169,8 +171,16 @@ public class FXMLVerMisReservasController implements Initializable {
         double num2 = (double) LocalDate.now().toEpochDay() * 24;
         if (!tableView.getItems().isEmpty()) {
             if ((num1 - num2) > 24) {
-                clubDBAccess.getBookings().remove(tableView.getSelectionModel().getSelectedItem());
-                observableBooking.remove(tableView.getSelectionModel().getSelectedItem());
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Diálogo de confirmación");
+                alert.setHeaderText("Eliminacion de reserva");
+                alert.setContentText("¿Seguro que quieres eliminar la reserva?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    clubDBAccess.getBookings().remove(tableView.getSelectionModel().getSelectedItem());
+                    observableBooking.remove(tableView.getSelectionModel().getSelectedItem());
+                }
+
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Dialogo de confirmación");
@@ -181,7 +191,4 @@ public class FXMLVerMisReservasController implements Initializable {
         }
     }
 
-    @FXML
-    private void Prueba(ActionEvent event) {
-    }
 }
