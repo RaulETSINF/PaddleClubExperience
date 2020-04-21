@@ -90,9 +90,12 @@ public class FXMLRegistroController implements Initializable {
         inicializar_Lisseners_Numero(targeta_Input, "Ha de contener 16 Digitos", "Tarjeta valida", tarjeta_Msg, tarjeta_Image, 16);
         inicializar_Lisseners_Numero(svc_Input, "Ha de contener 3 Digitos", "SVC valido", svc_Msg, svc_Image, 3);
         inicializar_Lisseners_Login(login_Input, login_Msg, login_Image);
-        inicializar_Lisseners_Password(password_Input, password_Msg, password_Image,6);
+        inicializar_Lisseners_Password(password_Input, password_Msg, password_Image, 6);
     }
 
+    /*
+    * Abre una ventana para selecionar la imagen de perfil
+     */
     @FXML
     private void seleccionarImagen(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLSelectorImagenes.fxml"));
@@ -108,6 +111,9 @@ public class FXMLRegistroController implements Initializable {
 
     }
 
+    /*
+    * Cancela el registro y vuelve al Login
+     */
     @FXML
     private void cancelarRegistro(ActionEvent event) throws IOException {
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -133,6 +139,9 @@ public class FXMLRegistroController implements Initializable {
 
     }
 
+    /*
+    *   Realiza la reserva después de comprobar que todos los campos sean validos.
+     */
     @FXML
     private void registrarse(ActionEvent event) throws IOException {
         System.out.println(comprovacionRegistro());
@@ -148,14 +157,14 @@ public class FXMLRegistroController implements Initializable {
             alert.setHeaderText("Usuario Creado Correctamente");
             alert.setContentText("Regresa al Inicio de sesión para ingresar");
             alert.showAndWait();
-                Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
-                Scene ventanaS = new Scene(ventanaP);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(ventanaS);
-                stage.setMinHeight(768);
-                stage.setMinWidth(1024);
-                stage.setTitle("Login");
-                stage.show();
+            Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
+            Scene ventanaS = new Scene(ventanaP);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(ventanaS);
+            stage.setMinHeight(768);
+            stage.setMinWidth(1024);
+            stage.setTitle("Login");
+            stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Dialogo de confirmación");
@@ -165,6 +174,9 @@ public class FXMLRegistroController implements Initializable {
         }
     }
 
+    /*
+    * Inicializa un Lissener que muestra un aviso si ponemos el campo Correcto o incorrecto
+     */
     private void inicializar_Lisseners_Numero(TextField x, String msg, String msg2, Text y, ImageView z, int top) {
         x.textProperty().addListener((observable, oldValue, newValue) -> {
             if (((x.getText().length() < top) || (x.getText().length() > top)) && (x.getText().length() != 0)) {
@@ -183,6 +195,9 @@ public class FXMLRegistroController implements Initializable {
 
     }
 
+    /*
+    * Inicializa un Lissener que muestra un aviso si ponemos el campo Correcto o incorrecto
+     */
     private void inicializar_Lisseners_Password(TextField x, Text y, ImageView z, int top) {
         x.textProperty().addListener((observable, oldValue, newValue) -> {
             if ((x.getText().length() >= top) && (x.getText().length() != 0)) {
@@ -200,6 +215,9 @@ public class FXMLRegistroController implements Initializable {
         });
     }
 
+    /*
+    * Inicializa un Lissener que muestra un aviso si ponemos el campo Correcto o incorrecto
+     */
     private void inicializar_Lisseners_Login(TextField x, Text y, ImageView z) {
         x.textProperty().addListener((observable, oldValue, newValue) -> {
             if ((ClubDBAccess.getSingletonClubDBAccess().existsLogin(x.getText())) && (x.getText().length() > 0)) {
@@ -217,6 +235,9 @@ public class FXMLRegistroController implements Initializable {
         });
     }
 
+    /*
+    * Limita los caracteres a escribir en el TextField a traves de un String.
+     */
     private void Constrains_TextField_1(TextField x, String y) {
         x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (y.contains(keyEvent.getCharacter())) {
@@ -225,6 +246,9 @@ public class FXMLRegistroController implements Initializable {
         });
     }
 
+    /*
+    * Limita los caracteres a escribir en el TextField a traves de un String.
+     */
     private void Constrains_TextField_2(TextField x, String y) {
         x.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, (javafx.scene.input.KeyEvent keyEvent) -> {
             if (!y.contains(keyEvent.getCharacter())) {

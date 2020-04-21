@@ -50,6 +50,10 @@ public class FXMLMiPerfilController implements Initializable {
 
     }
 
+    
+    /*
+    * A traves de una ventanita añadimos los datos bancarios si no los habiamos puesto.
+    */
     @FXML
     private void agregarDatosBancarios(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLDatosBancarios.fxml"));
@@ -64,8 +68,10 @@ public class FXMLMiPerfilController implements Initializable {
         stage.showAndWait();
     }
     
-    public void initPerfil(model.Member x) {
-        
+    /*
+    * Metodo que inicializa el Controles le pasamos el Member con el que iniciamos la sesion
+    */
+    public void initPerfil(model.Member x) {      
         nombre_Usuario.setText(x.getName()); 
         apellido_Usuario.setText(x.getSurname());
         telefono_Usuario.setText(x.getTelephone());
@@ -75,6 +81,10 @@ public class FXMLMiPerfilController implements Initializable {
         svc_Usuario.setText(x.getSvc());
     }
 
+    
+    /*
+    * Cierra la sesión y vuelve al Login
+    */
     @FXML
     private void cerrarSesion(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));

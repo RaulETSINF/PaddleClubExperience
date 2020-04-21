@@ -66,6 +66,9 @@ public class FXMLReservarPistaController implements Initializable {
      * Initializes the controller class.
      */
     @Override
+    /*
+    *   Inicaliamos varios componentes y le añadimos el Lissener al DatePicker, asi como la Label que muestra el dia.
+    */
     public void initialize(URL url, ResourceBundle rb) {
 
         timeSlotSelected = new SimpleObjectProperty<>();
@@ -88,8 +91,8 @@ public class FXMLReservarPistaController implements Initializable {
                 }
             };
         });
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
-        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("E MMM d");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ISO_DATE;
         timeSlotSelected.addListener((a, b, c) -> {
             if (c == null) {
                 slotSelected.setText("");
@@ -104,10 +107,18 @@ public class FXMLReservarPistaController implements Initializable {
         });
     }
 
+    /*
+    * Metodo de inicio le pasamos el member con el que inicamos la sesion para tenerlo ahi y realizar las
+    * reservas a su nombre.
+     */
     public void initReservar(Member x) {
         persona = x;
     }
 
+    /*
+    * Este metodo es idéntico al de verDisponibilidad solo que en vez de mostrar las reservas del usuario, lo que hace es mostrar todas
+    * las reservas hechas por todos los usuario.
+     */
     private void setTimeSlotsGrid(LocalDate date) {
         timeSlotSelected.setValue(null);
         ObservableList<Node> childern = gridPane.getChildren();
@@ -117,7 +128,7 @@ public class FXMLReservarPistaController implements Initializable {
         int slotIndex = 1;
         timeSlots = new ArrayList<>();
         int aux = 1;
-        String[] palabras = new String[]{"Court 1", "Court 2", "Court 3", "Court 4"};
+        String[] palabras = new String[]{"Pista 1", "Pista 2", "Pista 3", "Pista 4"};
         for (int i = 0; i < 4; i++) {
             for (LocalDateTime startTime = date.atTime(firstSlotStart);
                     !startTime.isAfter(date.atTime(lastSlotStart));
@@ -135,7 +146,7 @@ public class FXMLReservarPistaController implements Initializable {
         ArrayList<Booking> reservasDia = ClubDBAccess.getSingletonClubDBAccess().getForDayBookings(datePicker.getValue());
         for (Booking reserva : reservasDia) {
             for (TimeSlot timeSlot : timeSlots) {
-                if ((timeSlot.getTime().equals(reserva.getFromTime())) && (timeSlot.getNameNode().equals(reserva.getCourt().getName()))) {
+                if ((timeSlot.getTime().equals(reserva.getFromTime())) && (timeSlot.getcourtName().equals(reserva.getCourt().getName()))) {
                     if (timeSlot.getView().getStyleClass().contains("time-slot")) {
                         timeSlot.getView().getStyleClass().remove("time-slot");
                         timeSlot.getView().getStyleClass().add("time-slot-libre");
@@ -160,6 +171,11 @@ public class FXMLReservarPistaController implements Initializable {
 
     }
 
+    /*
+    * Método para reservas las pistas, cuando algun time slot esta selecionado, simplemente extraemos la información del time slot,
+    * y hacemos una reserva, después de confirmar si la queremos realmente, si no tenemos targeta nos avisa y si esta ya reservada tambien,
+    * lo consigue gracias a comparar los styles del Time-Slot.
+     */
     @FXML
     private void reservar(ActionEvent event) {
         if (timeSlotSelected != null) {
@@ -197,6 +213,10 @@ public class FXMLReservarPistaController implements Initializable {
         }
     }
 
+    /*
+    *   Clase TimeSlot ligeramente modificada, esta clase es identica a la de verDisponibilidad de las Pistas,
+    *   He puesto que guarde el Court y un nombre y con eso voy guardando los datos al crear los TimeSlots.
+     */
     public class TimeSlot {
 
         private final LocalDateTime start;
@@ -230,16 +250,16 @@ public class FXMLReservarPistaController implements Initializable {
             selectedProperty().addListener((obs, wasSelected, isSelected)
                     -> view.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, isSelected));
             switch (name) {
-                case "Court 1":
+                case "Pista 1":
                     pista = ClubDBAccess.getSingletonClubDBAccess().getCourt("Court 1");
                     break;
-                case "Court 2":
+                case "Pista 2":
                     pista = ClubDBAccess.getSingletonClubDBAccess().getCourt("Court 2");
                     break;
-                case "Court 3":
+                case "Pista 3":
                     pista = ClubDBAccess.getSingletonClubDBAccess().getCourt("Court 3");
                     break;
-                case "Court 4":
+                case "Pista 4":
                     pista = ClubDBAccess.getSingletonClubDBAccess().getCourt("Court 4");
                     break;
                 default:
@@ -278,6 +298,10 @@ public class FXMLReservarPistaController implements Initializable {
 
         public Court getCourt() {
             return pista;
+        }
+
+        public String getcourtName() {
+            return pista.getName();
         }
 
     }

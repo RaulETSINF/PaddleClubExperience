@@ -40,6 +40,10 @@ public class FXMLDatosBancariosController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    /*
+    * El mismo metodo que se utiliza en el registro pero usado aqui.
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Constrains_TextField_2(svc_Input, caracteresConfTelefono);
@@ -68,6 +72,10 @@ public class FXMLDatosBancariosController implements Initializable {
         });
     }
 
+    
+    /*
+    * Metodo de incio del controler, le pasado la targeta y el svc para modificarlo.
+    */
     public void initDatosBancarios(Member x, Text trg, Text svc) {
         targeta_Input.setText(x.getCreditCard());
         svc_Input.setText(x.getSvc());
@@ -82,6 +90,10 @@ public class FXMLDatosBancariosController implements Initializable {
         });
     }
 
+    
+    /*
+    * Guarda los cambios de la targeta y del svc
+    */
     @FXML
     private void guardar(ActionEvent event) {
         if (((targeta_Text.getText().equals("Targeta Valida"))) && (svc_Text.getText().equals("SVC Valido"))) {

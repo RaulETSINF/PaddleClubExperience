@@ -56,7 +56,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="394.0" prefHeight="100.0" prefWidth="1263.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido*" textAlignment="RIGHT" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
@@ -103,7 +103,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="494.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login*" textAlignment="RIGHT" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario*" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>
@@ -155,7 +155,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="594.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="NEVER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Tarjeta" textAlignment="RIGHT" wrappingWidth="270.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Número Tarjeta" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font name="Arial Bold" size="34.0" />
                </font>

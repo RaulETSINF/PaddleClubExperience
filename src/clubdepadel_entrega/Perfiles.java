@@ -11,6 +11,11 @@ import javafx.scene.image.Image;
  *
  * @author RaulP
  */
+
+/*
+*   Esta clase es la que crea los objetos que se meten en la ListView para seleccionar la Imagen de Perfil
+*   En el registro.
+*/
 public class Perfiles {
     private String nombre;
     private Image imagen;

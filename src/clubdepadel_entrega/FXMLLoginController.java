@@ -54,6 +54,9 @@ public class FXMLLoginController implements Initializable {
         });
     }
 
+    /*
+    * Comprueba que los campos introducidos son validos si lo son inicia la APP, si no lo son pues te lo indica.
+     */
     @FXML
     private void login(ActionEvent event) throws IOException {
 
@@ -79,6 +82,9 @@ public class FXMLLoginController implements Initializable {
 
     }
 
+    /*
+    * Carga la ventana para Registrarse
+     */
     @FXML
     private void resgistrarse(ActionEvent event) throws IOException {
         Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLRegistro.fxml"));
@@ -91,6 +97,9 @@ public class FXMLLoginController implements Initializable {
         stage.show();
     }
 
+    /*
+    * Carga la ventana para Ver la disponibilidad de las Pistas
+     */
     @FXML
     private void verDisponibilidadPistas(ActionEvent event) throws IOException {
         Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLVerDisponibilidad.fxml"));

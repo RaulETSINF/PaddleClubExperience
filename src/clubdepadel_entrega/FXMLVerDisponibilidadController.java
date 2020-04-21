@@ -65,6 +65,10 @@ public class FXMLVerDisponibilidadController implements Initializable {
      * Initializes the controller class.
      */
     @Override
+    /*
+    *   Inicializamos algunas variable y le metemos un lissener al TextField para que sea dinámica la interación, llamará a un metodo que pintará
+    *   el grid con las reservas del usuario introducido.
+     */
     public void initialize(URL url, ResourceBundle rb) {
         label.setText(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
         timeSlotSelected = new SimpleObjectProperty<>();
@@ -82,6 +86,10 @@ public class FXMLVerDisponibilidadController implements Initializable {
         });
     }
 
+    /*
+    *   Método que Pinta el Grid con las reservas del usuario introducido en el TextField, muy similar a la que vimos en la Pract 5 con el proyecto
+    *   GridTimeSlot.
+     */
     private void setTimeSlotsGrid(LocalDate date) {
         timeSlotSelected.setValue(null);
         ObservableList<Node> childern = gridPane.getChildren();
@@ -106,6 +114,7 @@ public class FXMLVerDisponibilidadController implements Initializable {
             aux++;
         }
 
+        /*Aqui es donde nosotros pintamos las celdas de las reservas del usuario*/
         ArrayList<Booking> reservasDia = ClubDBAccess.getSingletonClubDBAccess().getUserBookings(textField.getText());
         for (Booking reserva : reservasDia) {
             for (TimeSlot timeSlot : timeSlots) {
@@ -135,6 +144,7 @@ public class FXMLVerDisponibilidadController implements Initializable {
         });
     }
 
+    /*Método para volver atras al Login*/
     @FXML
     private void volver(ActionEvent event) throws IOException {
         Parent ventanaP = FXMLLoader.load(getClass().getResource("/clubdepadel_entrega/FXMLLogin.fxml"));
@@ -147,6 +157,7 @@ public class FXMLVerDisponibilidadController implements Initializable {
         stage.show();
     }
 
+    /*Clase ligeramente modificada del TimeSlot, extraida del Proyecto GridTimeSlot visto en la Pract 5*/
     public class TimeSlot {
 
         private final LocalDateTime start;

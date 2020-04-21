@@ -12,6 +12,10 @@ and open the template in the editor.
     -fx-background-color: #e6173d;
     -fx-background-radius: 15;
 }
+.Estilo_Botones:hover{
+    -fx-background-color: #bf0d2e;
+    -fx-background-radius: 15;
+}
 
 .Estilo_Fondo{
     -fx-background-color: #e8e1e2;   

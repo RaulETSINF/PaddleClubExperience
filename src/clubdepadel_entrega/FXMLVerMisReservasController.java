@@ -7,7 +7,6 @@ package clubdepadel_entrega;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,9 +18,6 @@ import model.Booking;
 import model.Court;
 import model.Member;
 import DBAcess.ClubDBAccess;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAmount;
 import java.util.Optional;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -57,6 +53,10 @@ public class FXMLVerMisReservasController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     */
+    /*
+    *   Aqui solo inicializamos algunos componentes y definimos como se van a ver las cosas dentro de TableView.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -159,34 +159,43 @@ public class FXMLVerMisReservasController implements Initializable {
         });
     }
 
+    /*
+    * Metodo que inicializa el controller llamado desde el MainApp, se le pasa el Miembro cor el que iniciamos la sesión.
+     */
     public void initVerMisReservas(Member x) {
         observableBooking = FXCollections.observableList(clubDBAccess.getUserBookings(x.getLogin()));
         tableView.setItems(observableBooking);
         aux = x;
     }
 
+    /*
+    *   Método para eliminar una reserva, lo que hace basicamente es que si hay algo selecccionado
+    *   y esta reserva no tiene un dia de diferencia con el dia actual te deja eliminarla
+     */
     @FXML
     private void Eliminar(ActionEvent event) {
-        double num1 = (double) tableView.getSelectionModel().getSelectedItem().getMadeForDay().toEpochDay() * 24;
-        double num2 = (double) LocalDate.now().toEpochDay() * 24;
-        if (!tableView.getItems().isEmpty()) {
-            if ((num1 - num2) > 24) {
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Diálogo de confirmación");
-                alert.setHeaderText("Eliminacion de reserva");
-                alert.setContentText("¿Seguro que quieres eliminar la reserva?");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    clubDBAccess.getBookings().remove(tableView.getSelectionModel().getSelectedItem());
-                    observableBooking.remove(tableView.getSelectionModel().getSelectedItem());
-                }
+        if ((tableView.getSelectionModel().getSelectedItem() != null)) {
+            double num1 = (double) tableView.getSelectionModel().getSelectedItem().getMadeForDay().toEpochDay() * 24;
+            double num2 = (double) LocalDate.now().toEpochDay() * 24;
+            if (!tableView.getItems().isEmpty()) {
+                if ((num1 - num2) > 24) {
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                    alert.setTitle("Diálogo de confirmación");
+                    alert.setHeaderText("Eliminacion de reserva");
+                    alert.setContentText("¿Seguro que quieres eliminar la reserva?");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        clubDBAccess.getBookings().remove(tableView.getSelectionModel().getSelectedItem());
+                        observableBooking.remove(tableView.getSelectionModel().getSelectedItem());
+                    }
 
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Dialogo de confirmación");
-                alert.setHeaderText("Error de Eliminación de Reserva");
-                alert.setContentText("No se puede Eliminar una reserva a falta de 1 dia");
-                alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Dialogo de confirmación");
+                    alert.setHeaderText("Error de Eliminación de Reserva");
+                    alert.setContentText("No se puede Eliminar una reserva a falta de 1 dia");
+                    alert.showAndWait();
+                }
             }
         }
     }

@@ -8,8 +8,6 @@ package clubdepadel_entrega;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,8 +31,6 @@ public class MainAppController implements Initializable {
 
     private model.Member usuario;
     ClubDBAccess clubDBAccess;
-    
-    
 
     /**
      * Initializes the controller class.
@@ -44,6 +40,9 @@ public class MainAppController implements Initializable {
         clubDBAccess = ClubDBAccess.getSingletonClubDBAccess();
     }
 
+    /*
+    * Metodo de inicialización llamado desde la LoginController
+     */
     public void initMainApp(model.Member x) {
         //clubDBAccess.getBookings().add(new Booking(LocalDateTime.now(), LocalDate.of(2020, 4, 21), LocalTime.of(9, 00), true, clubDBAccess.getCourts().get(0), x));
         imagen_perfil.setImage(x.getImage());
@@ -51,6 +50,9 @@ public class MainAppController implements Initializable {
         System.out.println(clubDBAccess.hasCreditCard(usuario.getLogin()));
     }
 
+    /*
+    * Carga el fxml de Ver Mi Perfil en el centro del BorderPane.
+     */
     @FXML
     private void verMiPerfil(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLMiPerfil.fxml"));
@@ -61,6 +63,9 @@ public class MainAppController implements Initializable {
 
     }
 
+    /*
+    * Carga el fxml de Reservar una pista en el centro del BorderPane.
+     */
     @FXML
     private void reservarUnaPista(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLReservarPista.fxml"));
@@ -71,6 +76,9 @@ public class MainAppController implements Initializable {
 
     }
 
+    /*
+    * Carga el fxml de Ver mis reservas en el centro del BorderPane.
+     */
     @FXML
     private void verMisReservas(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/clubdepadel_entrega/FXMLVerMisReservas.fxml"));

@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -29,7 +28,7 @@ import javafx.stage.Stage;
 public class FXMLSelectorImagenesController implements Initializable {
 
     private ObservableList<Perfiles> datos = null;
-    
+
     private ArrayList<Perfiles> misdatos = new ArrayList<Perfiles>();
     @FXML
     private ListView<Perfiles> listView;
@@ -48,9 +47,10 @@ public class FXMLSelectorImagenesController implements Initializable {
         listView.setItems(datos);
     }
 
+    /*Confirma la selección en la listView y cierra la ventana al confirmar la selección.*/
     @FXML
     private void confirmar(ActionEvent event) {
-        if (listView.getSelectionModel().getSelectedItem() != null) {   
+        if (listView.getSelectionModel().getSelectedItem() != null) {
             Image aux = listView.getSelectionModel().getSelectedItem().getImagen();
             x.setImage(aux);
         }
@@ -60,12 +60,19 @@ public class FXMLSelectorImagenesController implements Initializable {
 
     }
 
+    /*
+    * Metodo de inicialización, el ImageView que se le pasa es el ImageView de la ventana de registro asi mismo com un Lissener
+    * Este se va sobreescribiendo.
+     */
     public void initImagenPerfil(ImageView aux) {
         x.imageProperty().addListener((observable, oldValue, newValue) -> {
             aux.setImage(x.getImage());
         });
     }
 
+    /*
+    * Aqui definimos como se van a ver los objetos dentro del ImageView, sin objetos de tipo Perfiles.
+     */
     class ImageListCell extends ListCell<Perfiles> {
 
         private ImageView view = new ImageView();
@@ -80,12 +87,14 @@ public class FXMLSelectorImagenesController implements Initializable {
                 view.setImage(item.getImagen());
                 setGraphic(view);
                 setText("       " + item.getNombre());
-                setStyle("-fx-text-fill: #000000;"+"-fx-font-size: 25;"+
-                        "-fx-font-weight: bolder;" + "-fx-font-family: Arial;");
+                setStyle("-fx-text-fill: #000000;" + "-fx-font-size: 25;"
+                        + "-fx-font-weight: bolder;" + "-fx-font-family: Arial;");
             }
         }
     }
-
+    /*
+    *   Inicializa los datos de la TableView.
+     */
     private void inicializarDatos() {
         misdatos.add(new Perfiles("Raqueta 1", new Image("/images/padel.png")));
         misdatos.add(new Perfiles("Raqueta 2", new Image("/images/padel2.png")));
